@@ -1,0 +1,232 @@
+
+body{
+    background-color: @bk-color;
+}
+
+.links(@blue-link);
+
+// ---------------------------- //
+// Page ----------------------- //
+// ---------------------------- //
+
+.container{
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#page{
+    background-color: @page-color;
+    padding: 1em 0;
+    &.bordered{
+        width: 96%;
+        margin: 1em auto;
+    }
+}
+
+#page > header{
+    border-bottom: 1px solid @lightGrey;
+    h1{
+        font-size: 13px;
+    }
+}
+
+body > footer{
+    padding-top: 2em;
+    color: mix(#fff, @type, 20%);
+    .links(#fff);
+}
+
+// ---------------------------- //
+// Nav ------------------------ //
+// ---------------------------- //
+
+nav{
+    margin: 0 0 1em 0;
+    overflow:hidden;
+    .border-radius(8px);
+    ul{
+        list-style: none;
+        border-left: none;
+        padding: 0;
+        margin: 0 0 1em 0;
+        li{
+            padding: 0;
+
+            a{
+                .bold;
+                display: block;
+                padding: 1.5em;
+                &:hover{
+                    color: darken(@blue-link, 30%);
+                }
+                &:after{
+                    content: "»";
+                    float: right;
+                }
+            }
+            &:nth-child(even){
+                background: none;
+            }
+        }
+    }
+}
+
+footer{
+    nav{
+        border: 1px solid fade(#fff, 10%);
+    }
+}
+
+nav#site_nav{
+    // Nav buttonized for mobile
+    // mega-dropdown with 3 columns and headings
+    .submenu{
+        display: none;
+    }
+}
+
+// ---------------------------- //
+// Sections ------------------- //
+// ---------------------------- //
+
+section{
+    padding: 0 0 2em 0;
+    // margin in type.less
+    border-bottom: 1px solid fade(@type, 10%);
+}
+
+section.banner{
+    padding: 0;
+    border: none;
+    display: none;
+    ul.slides{
+        border: none;
+        .de-listify();
+        li{
+            padding: 0;
+            margin: 0;
+            display: none;
+            &:first-child{
+                display: block;
+            }
+            img{
+                .fit-image();
+            }
+        }
+    }
+}
+
+section.gallery{
+    display: none;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        li{
+            width: 100%;
+            border: none;
+            padding: 1em 0;
+            img{
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+section.form{
+    form{
+        fieldset{
+            border-bottom: 1px solid lighten(@type, 65%);
+        }
+    }
+}
+
+section.icons{
+    ul{
+        list-style:none;
+        padding: 0;
+        margin: 0 auto;
+        border:1px solid @type;
+        .clearfix;
+        li{
+            float: left;
+            width: 20%;
+            text-align: center;
+            .entypo{
+                color: #000;
+                font-family: "Entypo";
+                font-size: 64px;
+                line-height: 1;
+            }
+        }
+    }
+}
+
+// ---------------------------- //
+// Person --------------------- //
+// ---------------------------- //
+
+#person{
+    padding-top: 1em;
+    
+    #people_nav{
+        
+        a{
+            padding: 0.5em 2em 0.5em 1.5em;
+            background-color: @black;
+            color: @white;
+        }
+    }
+    #person_main{
+        #demographics{
+            border-bottom: 1px solid @lightGrey;
+            padding-bottom: 1em;
+            h2{
+                margin-bottom: 0;
+            }
+            #phone_numbers{
+                padding: 0;
+                list-style: none;
+                li{
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+            .status{
+                text-align: center;
+                background-color: @lightGrey;
+                .border-radius(8px);
+            }
+        }
+    }
+    #timeline{
+        form{
+            padding-bottom: 2em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid @lightBorder;
+        }
+        .update{
+            border-bottom: 1px solid @lightBorder;
+            margin-bottom: 1em;
+            .separator{
+                display: none;
+            }
+        }
+    }
+}
+
+// ---------------------------- //
+// Search --------------------- //
+// ---------------------------- //
+
+form.search{
+    display: none;
+    margin-bottom: 1em;
+    background-color: @blue-link;
+}
+
+
