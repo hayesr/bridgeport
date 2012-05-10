@@ -126,7 +126,7 @@ window.Mercury = {
         insertMedia:           ['Media', 'Insert Media (images and videos)', { modal: '/mercury/modals/media.html', regions: ['editable', 'markupable'] }],
         insertTable:           ['Table', 'Insert Table', { modal: '/mercury/modals/table.html', regions: ['editable', 'markupable'] }],
         insertCharacter:       ['Character', 'Special Characters', { modal: '/mercury/modals/character.html', regions: ['editable', 'markupable'] }],
-        snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],
+        //snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],
         sep2:                  ' ',
         historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
         sep3:                  ' ',
@@ -141,18 +141,18 @@ window.Mercury = {
           formatblock:         ['Block Format', null, { select: '/mercury/selects/formatblock.html', preload: true }],
           sep2:                '-'
           },
-        colors:                {
-          backColor:           ['Background Color', null, { palette: '/mercury/palettes/backcolor.html', context: true, preload: true, regions: ['editable'] }],
-          sep1:                ' ',
-          foreColor:           ['Text Color', null, { palette: '/mercury/palettes/forecolor.html', context: true, preload: true, regions: ['editable'] }],
-          sep2:                '-'
-          },
+        // colors:                {
+        //           backColor:           ['Background Color', null, { palette: '/mercury/palettes/backcolor.html', context: true, preload: true, regions: ['editable'] }],
+        //           sep1:                ' ',
+        //           foreColor:           ['Text Color', null, { palette: '/mercury/palettes/forecolor.html', context: true, preload: true, regions: ['editable'] }],
+        //           sep2:                '-'
+        //           },
         decoration:            {
           bold:                ['Bold', null, { context: true }],
           italic:              ['Italicize', null, { context: true }],
-          overline:            ['Overline', null, { context: true, regions: ['editable'] }],
+          // overline:            ['Overline', null, { context: true, regions: ['editable'] }],
           strikethrough:       ['Strikethrough', null, { context: true, regions: ['editable'] }],
-          underline:           ['Underline', null, { context: true, regions: ['editable'] }],
+          // underline:           ['Underline', null, { context: true, regions: ['editable'] }],
           sep:                 '-'
           },
         script:                {
@@ -160,13 +160,13 @@ window.Mercury = {
           superscript:         ['Superscript', null, { context: true }],
           sep: '-'
           },
-        justify:               {
-          justifyLeft:         ['Align Left', null, { context: true, regions: ['editable'] }],
-          justifyCenter:       ['Center', null, { context: true, regions: ['editable'] }],
-          justifyRight:        ['Align Right', null, { context: true, regions: ['editable'] }],
-          justifyFull:         ['Justify Full', null, { context: true, regions: ['editable'] }],
-          sep:                 '-'
-          },
+        // justify:               {
+        //           justifyLeft:         ['Align Left', null, { context: true, regions: ['editable'] }],
+        //           justifyCenter:       ['Center', null, { context: true, regions: ['editable'] }],
+        //           justifyRight:        ['Align Right', null, { context: true, regions: ['editable'] }],
+        //           justifyFull:         ['Justify Full', null, { context: true, regions: ['editable'] }],
+        //           sep:                 '-'
+        //           },
         list:                  {
           insertUnorderedList: ['Unordered List', null, { context: true }],
           insertOrderedList:   ['Numbered List', null, { context: true }],
