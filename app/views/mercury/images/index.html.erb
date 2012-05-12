@@ -1,0 +1,13 @@
+<div class="mercury-images-panel">
+  <div class="filter">
+    <input class="filter" type="search">
+  </div>
+  <ul>
+    <% @images.each do |i| %>
+    <li data-filter="<%= i.image_file_name.parameterize %>">
+      <img data-snippet="image" alt="<%= i.image_file_name %>" src="<%= i.image_url %>"/>
+      <%= i.image_file_name %>
+    </li>
+    <% end %>
+  </ul>
+</div>
