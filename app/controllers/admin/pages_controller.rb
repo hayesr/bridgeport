@@ -1,4 +1,5 @@
 class Admin::PagesController < ApplicationController
+  
   def index
     @pages = Page.all
     
@@ -6,6 +7,10 @@ class Admin::PagesController < ApplicationController
   
   def show
     @page = Page.find(params[:id])
+    # binding.pry
+    unless params[:mercury_frame]
+      render :layout => 'admin'
+    end
   end
   
   def new
@@ -17,17 +22,20 @@ class Admin::PagesController < ApplicationController
   end
   
   def create
+    parse_mercury_create
+    
     @page = Page.new(params[:page])
     
     if @page.save
-      redirect_to admin_page_path(@page)
+      # redirect_to admin_page_path(@page)
+      render text: ""
     else
-      render action: "new"
+      render text: "error"
     end
   end
   
   def update
-    parse_mercury
+    parse_mercury_update
     
     @page = Page.find(params[:id])
     
@@ -43,44 +51,45 @@ class Admin::PagesController < ApplicationController
     
   end
   
-  def mercury_update
-    page = Page.find(params[:id])
-    page.title = params[:content][:page_title][:value]
-    page.body = params[:content][:page_body][:value]
-    page.save!
-    render text: ""
-  end
+  # def mercury_update
+  #   page = Page.find(params[:id])
+  #   page.title = params[:content][:page_title][:value]
+  #   page.body = params[:content][:page_body][:value]
+  #   page.save!
+  #   render text: ""
+  # end
   
   private
   
-  def parse_mercury
+  def parse_mercury_update
     if params[:content]
-      params[:page] = {:areas => []}
+      title = params[:content].delete(:title)
+      params[:page] = {:title => title[:value], :areas => []}
       params[:content].each do |k,v|
-        # params[:page][:areas].merge!(k => {:id => k, :body => v[:value], :position => v[:data][:position].to_i})
         params[:page][:areas] << {
           :id => k, :body => v[:value], 
           :position => v[:data][:position].to_i, 
           :width => v[:data][:width], 
           :label => v[:data][:label]
-          }
+        }
       end
-      
-      # raise "content"
-      # {"content"=>{
-      #   "area_0"=>{"type"=>"editable", "value"=>"Area One\n      <div><br></div><div>More.</div>"},
-      #   "area_1"=>{"type"=>"editable", "value"=>"Area Two"}
-      # }
-      # params[:page] = {:areas => {}}
-      # params[:content].each do |k,v|
-      #   num = k.to_s.split('_')[1]
-      #   params[:page][:areas].merge!({"#{num}" => { :body => v[:value] }})
-      # end
-      
-      # params[:page][:title] = params[:content][:area_0][:value]
-      # params[:page][:body] = params[:content][:area_1][:value]
-      
+    end  
+  end
+  
+  def parse_mercury_create
+    if params[:content]
+      title = params[:content].delete(:title)
+      params[:page] = {:title => title[:value], :areas => []}
+      params[:content].each do |k,v|
+        params[:page][:areas] << {
+          :body => v[:value], 
+          :position => v[:data][:position].to_i, 
+          :width => v[:data][:width], 
+          :label => v[:data][:label]
+        }
+      end
     end
   end
+  
   
 end

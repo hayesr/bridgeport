@@ -8,3 +8,5 @@
   # when an element is dragged, set it so we have a global object
   @element.find('img[data-snippet]').on 'click', ->
     Mercury.trigger('action', { action: 'insertImage', value: {src: @src} })
+    # also works:
+    # Mercury.trigger('action', { action: 'insertHTML', value: @clone })

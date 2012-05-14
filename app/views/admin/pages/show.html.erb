@@ -1,13 +1,20 @@
 <% # render :partial => "admin/page_layouts/#{@page.layout}", :locals => {areas: @page.areas} %>
 
-<div id="two_column_layout" class="container" data-save-url="<%= mercury_update_admin_page_url(@page) %>">
-  <section id="<%= @page.slug %>" class="row">
-    <% @page.sorted_areas.each_with_index do |a, i| %>
-    <div class="<%= "#{a.label} #{a.width}" %> columns">
-      <div id="<%= a.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= a.width %>" data-label="<%= a.label %>">
-        <%= raw a.body %>
-      </div>
+<div class="container">
+  <section id="<%= @page.slug %>">
+    <div class="row">
+      <header class="twelve columns">
+        <h1 id="title" class="mercury-region" data-type="simple"><%= @page.title %></h1>
+      </header>
     </div>
-    <% end %>
+    <div class="row">
+      <% @page.sorted_areas.each_with_index do |a, i| %>
+      <div class="<%= "#{a.label} #{a.width}" %> columns">
+        <div id="<%= a.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= a.width %>" data-label="<%= a.label %>">
+          <%= raw a.body %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </section>
 </div>

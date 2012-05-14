@@ -115,6 +115,7 @@ window.Mercury = {
     toolbars: {
       primary: {
         save:                  ['Save', 'Save this page'],
+        cancel:                ['Cancel', 'Cancel editing'],
         preview:               ['Preview', 'Preview this page', { toggle: true, mode: true }],
         sep1:                  ' ',
         undoredo:              {
@@ -338,8 +339,8 @@ window.Mercury = {
       //foreColor: function(selection, options) { selection.wrap('<span style="color:' + options.value.toHex() + '">', true) },
       htmlEditor: function() { 
           Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' });
-          }
-      
+          },
+      cancel: function() { window.location = window.location.href.replace(/\/editor\//i, '/'); }
       },
 
 
