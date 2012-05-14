@@ -1,4 +1,4 @@
-class Area
+class Region
   include Mongoid::Document
   include Mongoid::Versioning
   

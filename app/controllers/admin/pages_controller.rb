@@ -64,9 +64,9 @@ class Admin::PagesController < ApplicationController
   def parse_mercury_update
     if params[:content]
       title = params[:content].delete(:title)
-      params[:page] = {:title => title[:value], :areas => []}
+      params[:page] = {:title => title[:value], :regions => []}
       params[:content].each do |k,v|
-        params[:page][:areas] << {
+        params[:page][:regions] << {
           :id => k, :body => v[:value], 
           :position => v[:data][:position].to_i, 
           :width => v[:data][:width], 
@@ -79,9 +79,9 @@ class Admin::PagesController < ApplicationController
   def parse_mercury_create
     if params[:content]
       title = params[:content].delete(:title)
-      params[:page] = {:title => title[:value], :areas => []}
+      params[:page] = {:title => title[:value], :regions => []}
       params[:content].each do |k,v|
-        params[:page][:areas] << {
+        params[:page][:regions] << {
           :body => v[:value], 
           :position => v[:data][:position].to_i, 
           :width => v[:data][:width], 

@@ -5,16 +5,16 @@ class Page < AbstractDocument
   field :title
   field :layout
   # field :body
-  embeds_many :areas
-  accepts_nested_attributes_for :areas, autosave: true
+  embeds_many :regions
+  accepts_nested_attributes_for :regions, autosave: true
   
   # scope :home_page, where(title: 'Home').first
   def self.home_page
     where(title: 'Home').first
   end
   
-  def sorted_areas
-    areas.sort_by{|a| a.position }
+  def sorted_regions
+    regions.sort_by{|a| a.position }
   end
   
   

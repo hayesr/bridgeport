@@ -1,5 +1,3 @@
-<% # render :partial => "admin/page_layouts/#{@page.layout}", :locals => {areas: @page.areas} %>
-
 <div class="container">
   <section id="<%= @page.slug %>">
     <div class="row">
@@ -8,10 +6,10 @@
       </header>
     </div>
     <div class="row">
-      <% @page.sorted_areas.each_with_index do |a, i| %>
-      <div class="<%= "#{a.label} #{a.width}" %> columns">
-        <div id="<%= a.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= a.width %>" data-label="<%= a.label %>">
-          <%= raw a.body %>
+      <% @page.sorted_regions.each_with_index do |r, i| %>
+      <div class="<%= "#{r.label} #{r.width}" %> columns">
+        <div id="<%= r.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= r.width %>" data-label="<%= r.label %>">
+          <%= raw r.body %>
         </div>
       </div>
       <% end %>

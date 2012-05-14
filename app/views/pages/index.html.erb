@@ -1,12 +1,9 @@
 
-<% # render :partial => "page_layouts/#{@page.layout}", :locals => {areas: @page.areas} %>
-<div id="two_column_layout" class="container" data-save-url="<%= mercury_update_admin_page_url(@page) %>">
+<div class="container">
   <section id="<%= @page.slug %>" class="row">
-    <% @page.sorted_areas.each_with_index do |a, i| %>
-    <div class="<%= "#{a.label} #{a.width}" %> columns">
-      <div id="<%= a.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= a.width %>" data-label="<%= a.label %>">
-        <%= raw a.body %>
-      </div>
+    <% @page.sorted_regions.each_with_index do |r, i| %>
+    <div class="<%= "#{r.label} #{r.width}" %> columns">
+      <%= raw a.body %>
     </div>
     <% end %>
   </section>
