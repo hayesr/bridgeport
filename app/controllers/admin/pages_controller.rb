@@ -47,8 +47,10 @@ class Admin::PagesController < ApplicationController
     end
   end
   
-  def delete
-    
+  def destroy
+    @page = Page.find(params[:id])
+    @page.destroy
+    redirect_to admin_pages_path
   end
   
   # def mercury_update
@@ -78,6 +80,7 @@ class Admin::PagesController < ApplicationController
   
   def parse_mercury_create
     if params[:content]
+      binding.pry
       title = params[:content].delete(:title)
       params[:page] = {:title => title[:value], :regions => []}
       params[:content].each do |k,v|
@@ -88,6 +91,7 @@ class Admin::PagesController < ApplicationController
           :label => v[:data][:label]
         }
       end
+      
     end
   end
   

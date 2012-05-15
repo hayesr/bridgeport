@@ -6,16 +6,25 @@
     <%= csrf_meta_tags %>
     <title>Mercury Editor</title>
     <%= stylesheet_link_tag    'mercury', 'mercury_overrides' %>
-    <%= javascript_include_tag 'jquery', 'mercury', 'mercury_overrides', 'imagespanel' %>
+    <%= javascript_include_tag 'jquery', 'mercury', 'mercury_overrides', 'imagespanel', 'regionspanel' %>
   </head>
   <body>
     <script type="text/javascript">
-      var saveUrl = null;
-      var options = {
-        saveStyle: 'form',  // 'form', or 'json' (default json)
-        saveMethod: 'PUT', // 'POST', or 'PUT', (create, vs. update -- default POST)
-        visible: null     // if the interface should start visible or not (default true)
-      };
+      var newpage = /new$/.test(window.location.pathname);
+      var saveUrl;
+      var options = { saveStyle: 'form', saveMethod: 'PUT', visible: null };
+      if(newpage){
+        saveUrl = "/admin/pages";
+        options.saveMethod = 'POST';
+      }else{
+        saveUrl = null;
+        options = {
+          saveStyle: 'form',  // 'form', or 'json' (default json)
+          saveMethod: 'PUT', // 'POST', or 'PUT', (create, vs. update -- default POST)
+          visible: null     // if the interface should start visible or not (default true)
+        };
+      }
+      
 
       //<!-- Mix in any configurations provided through Rails.application.config.mercury_config -->
       <% if Rails.application.config.respond_to?(:mercury_config) %>

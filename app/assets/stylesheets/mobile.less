@@ -5,9 +5,13 @@ body{
 
 .links(@blue-link);
 
-// ---------------------------- //
-// Page ----------------------- //
-// ---------------------------- //
+.group{
+    .clearfix;
+}
+
+// ----------------------------- //
+//   Page structure 
+// ----------------------------- //
 
 .container{
     width: 90%;
@@ -18,7 +22,7 @@ body{
 
 #page{
     background-color: @page-color;
-    padding: 1em 0;
+    padding: 0;
     &.bordered{
         width: 96%;
         margin: 1em auto;
@@ -26,70 +30,65 @@ body{
 }
 
 #page > header{
-    border-bottom: 1px solid @lightGrey;
-    h1{
-        font-size: 13px;
+    padding: 1em 0;
+    background-color: @red;
+    hgroup{
+        color: @white;
+        text-shadow: 0 -1px 1px fade(@black, 50%);
+        h1{
+            .bold;
+            line-height: 1;
+            margin-bottom: 0.5em;
+        }
+        h2{
+            font-size: 21px;
+            .normal;
+        }
     }
-}
 
-body > footer{
-    padding-top: 2em;
-    color: mix(#fff, @type, 20%);
-    .links(#fff);
-}
+    //Navigation
 
-// ---------------------------- //
-// Nav ------------------------ //
-// ---------------------------- //
-
-nav{
-    margin: 0 0 1em 0;
-    overflow:hidden;
-    .border-radius(8px);
-    ul{
-        list-style: none;
-        border-left: none;
-        padding: 0;
+    nav{
+        background-color: darken(@red, 5%);
         margin: 0 0 1em 0;
-        li{
+        overflow:hidden;
+        .border-radius(8px);
+        ul{
+            list-style: none;
+            border-left: none;
             padding: 0;
+            margin: 0 0 1em 0;
+            li{
+                padding: 0;
 
-            a{
-                .bold;
-                display: block;
-                padding: 1.5em;
-                &:hover{
-                    color: darken(@blue-link, 30%);
+                a{
+                    color: @white;
+                    .bold;
+                    display: block;
+                    padding: 1.5em;
+                    &:hover{
+                        background-color: darken(@red, 10%);
+                    }
+                    &:after{
+                        content: "»";
+                        float: right;
+                    }
                 }
-                &:after{
-                    content: "»";
-                    float: right;
+                &:nth-child(even){
+                    background: none;
                 }
-            }
-            &:nth-child(even){
-                background: none;
             }
         }
     }
 }
 
-footer{
-    nav{
-        border: 1px solid fade(#fff, 10%);
-    }
+#page > #main{
+    padding-bottom: 2em;
 }
 
-nav#site_nav{
-    // Nav buttonized for mobile
-    // mega-dropdown with 3 columns and headings
-    .submenu{
-        display: none;
-    }
-}
-
-// ---------------------------- //
-// Sections ------------------- //
-// ---------------------------- //
+// ----------------------------- //
+//    Sections 
+// ----------------------------- //
 
 section{
     padding: 0 0 2em 0;
@@ -166,67 +165,148 @@ section.icons{
     }
 }
 
-// ---------------------------- //
-// Person --------------------- //
-// ---------------------------- //
-
-#person{
+section.events{
+    border-top: 4px solid @lightGrey;
     padding-top: 1em;
-    
-    #people_nav{
-        
-        a{
-            padding: 0.5em 2em 0.5em 1.5em;
-            background-color: @black;
-            color: @white;
-        }
+    margin-top: 2.4em;
+    table{
+        margin-bottom: 2em;
     }
-    #person_main{
-        #demographics{
-            border-bottom: 1px solid @lightGrey;
-            padding-bottom: 1em;
-            h2{
-                margin-bottom: 0;
-            }
-            #phone_numbers{
-                padding: 0;
-                list-style: none;
-                li{
-                    padding: 0;
-                    margin: 0;
+    .calendar{
+        table{
+            max-width: 100%;
+            font-size: 13px;
+            tr{
+                td:first-child{
+                    border-left: 1px solid @lightGrey;
                 }
             }
-            .status{
-                text-align: center;
-                background-color: @lightGrey;
-                .border-radius(8px);
+            tr:last-child{
+        	    th, td{
+        	        border-bottom: 1px solid @lightGrey;
+        	    }
+        	}
+        	tr:nth-child(even){
+        	    background: none;
+        	}
+        	th{
+        	    background-color: @black;
+        	    color: @white;
+        	    text-align: center;
+        	}
+            td{
+                //width: 14.2857142857143%;
+                //width: 5%;
+                padding: 3px 5px 1em 0;
+                border-right: 1px solid @lightGrey;
+                text-align: right;
+                &.today{
+                    background-color: @blue;
+                    color: @white;
+                }
+                &.has_event{
+                    background-color: @lightGrey2;
+                }
+                &.weekend{
+                    color: @lightGrey2;
+                }
             }
         }
     }
-    #timeline{
-        form{
-            padding-bottom: 2em;
-            margin-bottom: 1em;
-            border-bottom: 1px solid @lightBorder;
+    .day{
+        margin-bottom: 3em;
+        h3{
+            // font-size: 13px;
+            border-bottom: 1px solid @lightGrey;
+            margin: 0 0 16px 0;
         }
-        .update{
-            border-bottom: 1px solid @lightBorder;
-            margin-bottom: 1em;
-            .separator{
-                display: none;
+        .event{
+            margin: 0 0 1em 0;
+            line-height: 1.2;
+            strong{
+                display: block;
+                font-size: 16px;
+            }
+            span{
+                display: block;
             }
         }
     }
 }
 
-// ---------------------------- //
-// Search --------------------- //
-// ---------------------------- //
+// ----------------------------- //
+//    Search
+// ----------------------------- //
 
 form.search{
     display: none;
     margin-bottom: 1em;
-    background-color: @blue-link;
 }
 
+// ----------------------------- //
+//    Articles
+// ----------------------------- //
 
+article{
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+article#welcome{
+    border-top: 4px solid @lightGrey;
+    margin: 2em 0;
+}
+
+article.news_item{
+    h4{
+        margin-bottom: 0;
+    }
+}
+
+// ----------------------------- //
+//    Footer 
+// ----------------------------- //
+
+body > footer{
+    padding-top: 2em;
+    color: mix(#fff, @type, 20%);
+    .links(#fff);
+    nav{
+        border: 1px solid fade(#fff, 10%);
+    }
+}
+
+// ----------------------------- //
+//    Regions
+// ----------------------------- //
+
+.primary{
+    font-size: 16px;
+}
+
+// ----------------------------- //
+//    Admin
+// ----------------------------- //
+
+#admin{
+    h1, h2, h3, h4, h5, h6{
+        color: @white;
+    }
+    ul.menu{
+        .de-listify;
+        margin: 1.3em 0 0 0;
+        float: left;
+        background-color: darken(@darkGrey, 10%);
+        .border-radius(4px);
+        li{
+            float: left;
+            a{
+                display: block;
+                padding: 0 1em 0 1em;
+                color: @white;
+            }
+        }
+    }
+}

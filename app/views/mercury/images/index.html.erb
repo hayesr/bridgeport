@@ -4,9 +4,10 @@
   </div>
   <ul>
     <% @images.each do |i| %>
-    <li data-filter="<%= i.image_file_name.parameterize %>">
-      <img data-snippet="image" alt="<%= i.image_file_name %>" src="<%= i.image_url %>"/>
-      <%= i.image_file_name %>
+    <li class="group" data-filter="<%= i.image_file_name.parameterize %>">
+      <img data-snippet="image" alt="<%= i.image_file_name %>" src="<%= i.image_url(:thumb) %>"/>
+      <span class="name"><%= i.image_file_name %></span><br>
+      <span class="res"><%= i.width %>x<%= i.height %></span>
     </li>
     <% end %>
   </ul>

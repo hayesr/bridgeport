@@ -132,7 +132,8 @@ window.Mercury = {
         historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
         //sep3:                  ' ',
         notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }],
-        imagesPanel:           ['Images', 'Uploaded Images', {panel: '/mercury/images' }]
+        imagesPanel:           ['Images', 'Uploaded Images', {panel: '/mercury/images' }],
+        regionsPanel:          ['Regions', 'Add/Modify Regions', {panel: '/mercury/panels/regions.html' }]
         },
 
       editable: {
@@ -485,8 +486,14 @@ window.Mercury = {
 
 
 jQuery(function(){
+    var saveRedirect;
+    if(newpage){
+        saveRedirect = "/admin/pages";
+    }else{
+        saveRedirect = window.location.href.replace(/\/editor\//i, '/'); 
+    }
 
   Mercury.on('saved', function(){
-    window.location = window.location.href.replace(/\/editor\//i, '/');
+    window.location = saveRedirect;
   });
 });
