@@ -8,7 +8,7 @@ module Sluggable
   
   module ClassMethods
     def find_by_slug(slug)
-      where(:slug => slug)
+      where(:slug => slug).first
     end
     
     def slug_exists?(slug)

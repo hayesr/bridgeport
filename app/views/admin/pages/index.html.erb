@@ -1,13 +1,16 @@
 
 <section id="admin_home" class="container">
   <div class="row">
+    <h2>Site Structure</h2>
+  </div>
+  <div class="row">
     <div class="eight columns">
-      <ol class="page-sorter">
+      <ol class="page-sorter" data-update-url="<%= sort_admin_pages_path %>">
       <% @pages.each do |page| %>
         <%= content_tag_for :li, page do %>
           <div class="innerds">
             <div class="title">
-              <%= page.title %>
+              <strong><%= page.title %></strong>
             </div>
             <div class="ops">
               <%= link_to 'View', admin_page_path(page) %>
@@ -15,6 +18,24 @@
               | <%= link_to 'Delete', admin_page_path(page), :method => 'delete' %>
             </div>
           </div>
+          <% if page.children.any? %>
+          <ol>
+          <% page.children.each do |child| %> 
+            <%= content_tag_for :li, child do %>
+              <div class="innerds">
+                <div class="title">
+                  <strong><%= child.title %></strong>
+                </div>
+                <div class="ops">
+                  <%= link_to 'View', admin_page_path(child) %>
+                  | <%= link_to 'Edit', "/editor" + admin_page_path(child) %>
+                  | <%= link_to 'Delete', admin_page_path(child), :method => 'delete' %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>  
+          </ol>
+          <% end %>
         <% end %>
       <% end %>
       </ol>

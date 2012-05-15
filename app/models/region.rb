@@ -1,6 +1,6 @@
 class Region
   include Mongoid::Document
-  include Mongoid::Versioning
+  # include Mongoid::Versioning
   
   field :body, type: String
   field :width

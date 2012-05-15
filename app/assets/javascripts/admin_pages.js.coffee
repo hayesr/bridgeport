@@ -11,6 +11,6 @@ jQuery ->
     tolerance: 'element',
     toleranceElement: 'div',
     update: ->
-        # $.post($(this).data('update-url'), $(this).sortable('serialize'))
-        console.log(@nestedSortable('serialize'))
+        $.post($(this).data('update-url'), $(this).sortable('serialize'))
+        # console.log($(@).sortable('serialize'))
   )

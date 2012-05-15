@@ -3,12 +3,7 @@ Schoolcms::Application.routes.draw do
   
   namespace :admin do
     resources :pages do
-      post :mercury_update, :on => :member
-    end
-    resources :projects do
-      resources :photos do
-        post :sort, :on => :collection
-      end
+      post :sort, :on => :collection
     end
   end
   

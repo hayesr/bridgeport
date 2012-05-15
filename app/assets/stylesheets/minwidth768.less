@@ -158,9 +158,9 @@ article{
 ol.page-sorter{
     list-style: none;
     li{
-        // margin-bottom: 1em;
+        margin-bottom: 1em;
         // padding:0.5em 0;
-        padding-right: 0;
+        padding:0.5em 0 0 0;
         .innerds{
             background-color: lighten(@lightGrey2, 5%);
             border-bottom: 1px solid @lightGrey2;
@@ -181,10 +181,11 @@ ol.page-sorter{
         ol{
             list-style: none;
             padding: 0 0 0 1em;
-            margin: 1em 0 1em 1em;
+            margin: 1em 0 0 1em;
             border-left: 1px solid @lightGrey;
             li{
-                .clearfix;
+                // .clearfix;
+                padding-bottom:0;
             }
         }
     }

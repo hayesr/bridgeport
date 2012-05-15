@@ -1,7 +1,7 @@
 class Admin::PagesController < ApplicationController
   
   def index
-    @pages = Page.all
+    @pages = Page.roots
     render :layout => 'admin'
   end
   
@@ -53,13 +53,10 @@ class Admin::PagesController < ApplicationController
     redirect_to admin_pages_path
   end
   
-  # def mercury_update
-  #   page = Page.find(params[:id])
-  #   page.title = params[:content][:page_title][:value]
-  #   page.body = params[:content][:page_body][:value]
-  #   page.save!
-  #   render text: ""
-  # end
+  def sort
+    Page.process_positions(params[:page])
+    render nothing: true
+  end
   
   private
   
