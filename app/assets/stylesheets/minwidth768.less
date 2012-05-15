@@ -150,3 +150,42 @@ article{
 // ----------------------------- //
 //    Footer 
 // ----------------------------- //
+
+// ----------------------------- //
+//    Admin
+// ----------------------------- //
+
+ol.page-sorter{
+    list-style: none;
+    li{
+        // margin-bottom: 1em;
+        // padding:0.5em 0;
+        padding-right: 0;
+        .innerds{
+            background-color: lighten(@lightGrey2, 5%);
+            border-bottom: 1px solid @lightGrey2;
+            height: 2em;
+            padding: 0.5em;
+            div.title{
+                float: left;
+                &:before{
+                    content: ':::';
+                    padding: 0 0.5em;
+                }
+            }
+            div.ops{
+                // display: none;
+                float: right;
+            }
+        }
+        ol{
+            list-style: none;
+            padding: 0 0 0 1em;
+            margin: 1em 0 1em 1em;
+            border-left: 1px solid @lightGrey;
+            li{
+                .clearfix;
+            }
+        }
+    }
+}
