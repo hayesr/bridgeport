@@ -1,12 +1,17 @@
 class Page < AbstractDocument
   include Mongoid::Versioning
-  include Mongoid::Tree
-  include Mongoid::Tree::Ordering # => Adds default scope asc(:position)
+  # include Mongoid::Tree
+  # include Mongoid::Tree::Ordering # => Adds default scope asc(:position)
+  include Mongoid::Ancestry
   include Sluggable
+  
+  has_ancestry
   
   field :title
   field :layout
-  # field :body
+  field :position
+  field :parent_id
+  
   embeds_many :regions
   accepts_nested_attributes_for :regions, autosave: true
   
@@ -20,14 +25,11 @@ class Page < AbstractDocument
     def process_positions(params)
       tree = organize_position_params(params)
       position_branches(tree)
-      # position_roots(tree)
-      # position_branches(tree)
     end
     
   end
   
   def sorted_regions
-    # regions.sort_by{|a| a.position }
     regions.asc(:position)
   end
   
@@ -55,14 +57,14 @@ class Page < AbstractDocument
         if branch == 'root'
           parent = nil
         else
-          parent = find(branch)
+          parent = branch
         end
-        #where(_id: id).update_all(parent: parent, position: i)
+        where(_id: id).update_all(parent: parent, position: i)
         #where(_id: id).update(parent: parent, position: i)
-        leaf = find(id)
-        leaf.parent = parent
-        leaf.position = i
-        leaf.save
+        # leaf = find(id)
+        # leaf.parent = parent
+        # leaf.position = i
+        # leaf.save
       end
     end
   end

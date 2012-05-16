@@ -5,45 +5,10 @@
   </div>
   <div class="row">
     <div class="eight columns">
-      <ol class="page-sorter" data-update-url="<%= sort_admin_pages_path %>">
-      <% @pages.each do |page| %>
-        <%= content_tag_for :li, page do %>
-          <div class="innerds">
-            <div class="title">
-              <strong><%= page.title %></strong>
-            </div>
-            <div class="ops">
-              <%= link_to 'View', admin_page_path(page) %>
-              | <%= link_to 'Edit', "/editor" + admin_page_path(page) %>
-              | <%= link_to 'Delete', admin_page_path(page), :method => 'delete' %>
-            </div>
-          </div>
-          <% if page.children.any? %>
-          <ol>
-          <% page.children.each do |child| %> 
-            <%= content_tag_for :li, child do %>
-              <div class="innerds">
-                <div class="title">
-                  <strong><%= child.title %></strong>
-                </div>
-                <div class="ops">
-                  <%= link_to 'View', admin_page_path(child) %>
-                  | <%= link_to 'Edit', "/editor" + admin_page_path(child) %>
-                  | <%= link_to 'Delete', admin_page_path(child), :method => 'delete' %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>  
-          </ol>
-          <% end %>
-        <% end %>
-      <% end %>
-      </ol>
+      <%= nested_pages(@pages) %>
     </div>
     <div class="four columns">
       <p><%= link_to 'New', "/editor" + new_admin_page_path %></p>
     </div>
   </div>
 </section>
-
-

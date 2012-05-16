@@ -32,7 +32,8 @@ gem 'rmagick'
 # Database Stuff
 gem "mongoid", "~> 2.4"
 gem "bson_ext", "~> 1.4"
-gem "mongoid-tree"
+# gem "mongoid-tree"
+gem "mongoid-ancestry"
 gem "mongoid_session_store"
 
 # Pagination

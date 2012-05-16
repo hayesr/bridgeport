@@ -1,7 +1,8 @@
 class Admin::PagesController < ApplicationController
   
   def index
-    @pages = Page.roots
+    # @pages = Page.roots
+    @pages = Page.arrange(:order => :position)
     render :layout => 'admin'
   end
   

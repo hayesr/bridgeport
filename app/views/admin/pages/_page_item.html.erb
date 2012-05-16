@@ -1,0 +1,12 @@
+
+
+<div class="page_item">
+  <div class="title">
+    <strong><%= page.title %></strong>
+  </div>
+  <div class="ops">
+    <%= link_to 'View', admin_page_path(page) %>
+    | <%= link_to 'Edit', "/editor" + admin_page_path(page) %>
+    | <%= link_to 'Delete', admin_page_path(page), :method => 'delete' %>
+  </div>
+</div>
