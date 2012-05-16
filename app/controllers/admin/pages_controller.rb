@@ -1,5 +1,7 @@
 class Admin::PagesController < ApplicationController
   
+  before_filter :load_root_nav
+  
   def index
     # @pages = Page.roots
     @pages = Page.arrange(:order => [:position, :asc])
@@ -61,6 +63,10 @@ class Admin::PagesController < ApplicationController
   end
   
   private
+  
+  def load_root_nav
+    @roots = Page.roots.asc(:position)
+  end
   
   def parse_mercury_update
     if params[:content]
