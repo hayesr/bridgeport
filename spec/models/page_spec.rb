@@ -16,7 +16,7 @@ describe Page do
     end
 
     it "Can be found by its slug" do
-      my_page = Page.find_by_slug("this-is-my-page-title").first
+      my_page = Page.find_by_slug("this-is-my-page-title")
       my_page.title.should eq "This is my page title"
     end
 
