@@ -1,4 +1,11 @@
 Schoolcms::Application.routes.draw do
+  devise_for :users, :path => 'auth'
+  devise_scope :user do
+    get '/signin' => 'devise/sessions#new'
+    get '/signout' => 'devise/sessions#destroy'
+  end
+  resources :users
+
   Mercury::Engine.routes
   
   namespace :admin do
