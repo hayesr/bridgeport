@@ -1,0 +1,15 @@
+<section id="manage_users" class="container">
+  <div class="row">
+    <div class="eight columns">
+      <h2>Manage Users</h2>
+      <ul>
+        <% @users.each do |user| %>
+        <li><%= link_to user.name, admin_users_path(user) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="four columns">
+      <p><%= link_to 'New User', new_admin_user_path %></p>
+    </div>
+  </div>
+</section>

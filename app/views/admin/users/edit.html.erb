@@ -1,0 +1,11 @@
+<section class="container">
+  <div class="row">
+    <div class="eight columns">
+      <h2>Edit <%= @user.name %></h2>
+      <%= render :partial => 'form', locals: { target: admin_user_path(@user) } %>
+    </div>
+    <div class="four columns">
+      
+    </div>
+  </div>
+</section>

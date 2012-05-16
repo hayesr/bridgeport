@@ -4,7 +4,6 @@ Schoolcms::Application.routes.draw do
     get '/signin' => 'devise/sessions#new'
     get '/signout' => 'devise/sessions#destroy'
   end
-  resources :users
 
   Mercury::Engine.routes
   
@@ -12,6 +11,7 @@ Schoolcms::Application.routes.draw do
     resources :pages do
       post :sort, :on => :collection
     end
+    resources :users
   end
   
   resources :pages, :only => [:index, :show]

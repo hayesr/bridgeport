@@ -64,10 +64,6 @@ class Admin::PagesController < ApplicationController
   
   private
   
-  def load_root_nav
-    @roots = Page.roots.asc(:position)
-  end
-  
   def parse_mercury_update
     if params[:content]
       title = params[:content].delete(:title)
