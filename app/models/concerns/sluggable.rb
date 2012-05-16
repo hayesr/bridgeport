@@ -12,7 +12,7 @@ module Sluggable
     end
     
     def slug_exists?(slug)
-      find_by_slug(slug).any?
+      !find_by_slug(slug).nil?
     end
   end
   

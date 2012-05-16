@@ -2,7 +2,7 @@ class Admin::PagesController < ApplicationController
   
   def index
     # @pages = Page.roots
-    @pages = Page.arrange(:order => :position)
+    @pages = Page.arrange(:order => [:position, :asc])
     render :layout => 'admin'
   end
   
@@ -55,6 +55,7 @@ class Admin::PagesController < ApplicationController
   end
   
   def sort
+    # raise "hi"
     Page.process_positions(params[:page])
     render nothing: true
   end

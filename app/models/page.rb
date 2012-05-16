@@ -10,10 +10,12 @@ class Page < AbstractDocument
   field :title
   field :layout
   field :position
-  field :parent_id
+  # field :parent_id
   
   embeds_many :regions
   accepts_nested_attributes_for :regions, autosave: true
+  
+  # default_scope asc(:position)
   
   before_save :clean_title
   
@@ -53,21 +55,36 @@ class Page < AbstractDocument
   
   def self.position_branches(tree)
     tree.each do |branch, leaves|
-      leaves.each_with_index do |id, i|
-        if branch == 'root'
-          parent = nil
-        else
-          parent = branch
+      leaves.each_with_index do |iden, i|
+        # binding.pry
+        unless branch.nil?
+          if branch == 'root'
+            daddy = nil
+          else
+            daddy = find(branch)
+          end
+          # where(_id: id).update_all(parent: parent, position: i)
+          # where(_id: id).update(parent: parent, position: i)
+          leaf = find(iden)
+          leaf.parent = daddy
+          leaf.position = i
+          leaf.save
         end
-        where(_id: id).update_all(parent: parent, position: i)
-        #where(_id: id).update(parent: parent, position: i)
-        # leaf = find(id)
-        # leaf.parent = parent
-        # leaf.position = i
-        # leaf.save
       end
     end
+    # binding.pry
   end
   
+  # {
+  #   "4fb290b74ef1b7664e00001f"=>"root",
+  #   "4fb2a10a4ef1b7664e00002e"=>"root",
+  #   "4fb2a1244ef1b7664e000032"=>"root",
+  #   "4fb2a04e4ef1b7664e00002a"=>"root",
+  #   "4fb29e934ef1b7664e000026"=>"root",
+  #   "4fb31a054ef1b7764e00000e"=>"4fb29e934ef1b7664e000026",
+  #   "4fb31a954ef1b7764e000016"=>"4fb29e934ef1b7664e000026",
+  #   "4fab42a54ef1b765ee000001"=>"root"
+  # }
+  #    4fb2be8b4ef1b7664e000043
   
 end

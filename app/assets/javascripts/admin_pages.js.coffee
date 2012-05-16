@@ -1,5 +1,5 @@
 jQuery ->
-  $('ol.page-sorter').nestedSortable(
+  $('ol.page_sorter').nestedSortable(
     disableNesting: 'no-nest',
     forcePlaceholderSize: true,
     handle: 'div',
@@ -12,5 +12,5 @@ jQuery ->
     toleranceElement: 'div',
     update: ->
         $.post($(this).data('update-url'), $(this).sortable('serialize'))
-        # console.log($(@).sortable('serialize'))
+        # console.log($(this).sortable('serialize'))
   )
