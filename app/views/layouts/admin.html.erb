@@ -25,11 +25,16 @@
         <div class="two columns">
           <h4>Admin</h4>
         </div>
-        <div class="ten columns">
+        <div class="eight columns">
           <ul class="menu">
             <li><%= link_to "All pages", admin_pages_path %></li>
             <li><%= link_to "Edit Page", "/editor" + request.path if action_name == 'show' %></li>
           </ul>
+        </div>
+        <div id="account" class="two columns">
+          <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>
+          <% end %>
         </div>
       </div>
     </div>
