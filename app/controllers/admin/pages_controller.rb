@@ -10,7 +10,6 @@ class Admin::PagesController < ApplicationController
   
   def show
     @page = Page.find(params[:id])
-    # binding.pry
     unless params[:mercury_frame]
       render :layout => 'admin'
     end

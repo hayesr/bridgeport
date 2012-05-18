@@ -6,6 +6,7 @@ class Admin::UsersController < ApplicationController
   
   def index
     @users = User.all
+    
   end
   
   def show
@@ -34,9 +35,9 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      # success
+      redirect_to admin_users_path, :notice => 'User updated'
     else
-      # errors
+      render action: 'edit'
     end
   end
   

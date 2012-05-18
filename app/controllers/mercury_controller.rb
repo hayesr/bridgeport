@@ -1,11 +1,13 @@
 class MercuryController < ActionController::Base
   # include ::Mercury::Authentication
+  include ::Oxygen::Authorization
 
   protect_from_forgery
-  # before_filter :authenticate, :only => :edit
+  before_filter :authenticate, :only => :edit
   layout false
 
   def edit
+    binding.pry
     render :text => '', :layout => 'mercury'
   end
 
@@ -29,6 +31,6 @@ class MercuryController < ActionController::Base
   private
 
   def authenticate
-    redirect_to "/#{params[:requested_uri]}" unless can_edit?
+    redirect_to "/#{params[:requested_uri]}" unless can_edit_request?(request)
   end
 end

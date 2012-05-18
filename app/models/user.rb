@@ -39,4 +39,13 @@ class User
   # field :authentication_token, :type => String
   
   field :name
+  field :roles, type: Array, :default => []
+  
+  def admin?
+    roles.include?('admin')
+  end
+  
+  def is?(role)
+    roles.include?(role.to_s)
+  end
 end
