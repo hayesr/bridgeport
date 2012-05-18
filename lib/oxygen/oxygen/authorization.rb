@@ -1,13 +1,24 @@
 module Oxygen
   module Authorization
-    def can_edit?(resource)
+    
+    def authorize(action, record)
       # binding.pry
-      true
+      if can?(action, record)
+        true
+      else
+        redirect_to root_path, notice: "Sorry, you can't do that."
+      end
     end
     
-    def can_edit_request?(request)
-      # binding.pry
-      true
+    def can?(action, record)
+      current_user.is? :admin || permission_granted_for?(action, resource)
     end
+    
+    def permission_granted_for?(action, record)
+      if record.respond_to?(:grants) && record.grants[action.to_s]
+        record.grants[action.to_s].include? current_user.id
+      end
+    end
+    
   end
 end

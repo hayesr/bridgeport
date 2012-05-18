@@ -10,7 +10,7 @@ class Page < AbstractDocument
   field :title
   field :layout
   field :position
-  field :grants, :type => Array, :default => []
+  field :grants, :type => Hash, :default => {}
   
   embeds_many :regions
   accepts_nested_attributes_for :regions, autosave: true

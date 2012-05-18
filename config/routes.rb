@@ -8,7 +8,7 @@ Schoolcms::Application.routes.draw do
   Mercury::Engine.routes
   
   namespace :admin do
-    resources :pages do
+    resources :pages, :except => 'edit' do
       post :sort, :on => :collection
     end
     resources :users

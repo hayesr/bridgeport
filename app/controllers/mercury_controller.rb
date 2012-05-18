@@ -7,7 +7,7 @@ class MercuryController < ActionController::Base
   layout false
 
   def edit
-    binding.pry
+    # binding.pry
     render :text => '', :layout => 'mercury'
   end
 
@@ -31,6 +31,12 @@ class MercuryController < ActionController::Base
   private
 
   def authenticate
-    redirect_to "/#{params[:requested_uri]}" unless can_edit_request?(request)
+    redirect_to "/#{params[:requested_uri]}", notice: "Sorry you can't edit that." unless can?(:edit, record)
+  end
+  
+  def record
+    record_id = request.path.split('/').last
+    klass = request.path.split('/')[-2].singularize.capitalize.constantize
+    record = klass.find(record_id)
   end
 end

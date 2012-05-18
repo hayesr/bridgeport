@@ -1,5 +1,9 @@
 class Admin::PagesController < ApplicationController
   
+  # include Oxygen::Authorization
+  
+  layout :admin_layout
+  
   before_filter :load_root_nav
   
   def index
@@ -10,17 +14,12 @@ class Admin::PagesController < ApplicationController
   
   def show
     @page = Page.find(params[:id])
-    unless params[:mercury_frame]
-      render :layout => 'admin'
-    end
+    # authorize :edit, @page
+    
   end
   
   def new
     @page = Page.new
-  end
-  
-  def edit
-    @page = Page.find(params[:id])
   end
   
   def create
@@ -94,5 +93,8 @@ class Admin::PagesController < ApplicationController
     
   end
   
+  def admin_layout
+    params[:mercury_frame] ? 'application' : 'admin'
+  end
   
 end
