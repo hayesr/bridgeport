@@ -30,12 +30,9 @@
       </hgroup>
       <nav>
         <ul class="six">
-          <li><a href='/'>Home</a></li>
-          <li><a href='/'>Newsletter</a></li>
-          <li><a href='/'>Teachers</a></li>
-          <li><a href='/'>Links</a></li>
-          <li><a href='/'>Events &amp; Schedule</a></li>
-          <li><a href='/'>PTA</a></li>
+          <% @roots.each do |page| %>
+          <li><%= link_to page.title, switch_path(page, user_signed_in?)%></li>
+          <% end %>
         </ul>
       </nav>
       
