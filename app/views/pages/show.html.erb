@@ -1,0 +1,18 @@
+<div class="container">
+  <section id="<%= @page.slug %>">
+    <div class="row">
+      <header class="twelve columns">
+        <h1 id="title"><%= @page.title %></h1>
+      </header>
+    </div>
+    <% if @page.regions.any? %>
+    <div class="row">
+      <% @page.sorted_regions.each do |r| %>
+      <div class="<%= "#{r.label} #{r.width}" %> columns">
+        <%= raw r.body %>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </section>
+</div>
