@@ -14,7 +14,6 @@ ul.columns{
     }
 }
 
-
 .sidebar{
     color: lighten(@type, 20%);
 }
@@ -65,6 +64,9 @@ ul.columns{
 
 #page > #main{
     padding-bottom: 4em;
+    .column, .columns{
+        .transition(width, .6s);
+    }
 }
 
 // ----------------------------- //

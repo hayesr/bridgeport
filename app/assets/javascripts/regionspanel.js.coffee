@@ -22,7 +22,7 @@
         
         region = $(r)
         
-        label = region.data('label') + ' Width'
+        label = region.data('label') + '-width'
         # currentWidth = region.data('width')
         newSelect = @select.clone()
             .attr({ name: label, id: label })
@@ -32,13 +32,11 @@
             newWidth = numberToClassName($(@).val())
             $(region).attr('data-width', newWidth)
             $(region).parent()
-                .removeClass( (i,c) ->
-                    c + ' columns'
-                )
+                .removeClass( (i,c) -> c )
                 .addClass(region.data('label') + ' ' + newWidth + ' columns')
             
         newField = $('<div/>', {class: 'field'})
-        newLabel = $('<label for="' + label + '">Region ' + i + ' Width</label>')
+        newLabel = $('<label for="' + label + '">width</label>')
         newLabel.appendTo(newField)
         newSelect.appendTo(newField).show()
         newField.appendTo(@form)
