@@ -244,7 +244,7 @@ window.Mercury = {
       className: 'mercury-region',
       identifier: 'id',
       // determineType: function(region){},
-      dataAttributes: ['position', 'width', 'label']
+      dataAttributes: ['position', 'width', 'label', 'destroy']
       },
 
 

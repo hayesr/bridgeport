@@ -15,7 +15,6 @@
     input.filter {
         outline: none;
         font-size: 1em;
-        
         width: 100%;
         padding-left: 20px;
         margin-bottom: 2em;
@@ -49,10 +48,17 @@
 
 .mercury-regions-panel{
     width: 250px;
-    .field{
+    .region_controls_template{
         padding-bottom: 1em;
         border-bottom: 1px solid #ccc;
         margin-bottom: 1em;
+        float: left;
+        .field{
+            float: left;
+        }
+        .delete_region{
+            clear: both;
+        }
         label{
             display: block;
         }

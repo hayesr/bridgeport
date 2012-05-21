@@ -66,14 +66,18 @@ class Admin::PagesController < ApplicationController
     if params[:content]
       title = params[:content].delete(:title)
       params[:page] = {:title => title[:value], :regions => []}
-      params[:content].each do |k,v|
-        params[:page][:regions] << {
-          :id => k, :body => v[:value], 
-          :position => v[:data][:position].to_i, 
-          :width => v[:data][:width], 
-          :label => v[:data][:label]
-        }
+      params[:content].each do |k,v|        
+        unless v[:data][:destroy]
+          params[:page][:regions] << {
+            :id => k, :body => v[:value], 
+            :position => v[:data][:position].to_i, 
+            :width => v[:data][:width], 
+            :label => v[:data][:label],
+            :_destroy => v[:data][:destroy]
+          }
+        end
       end
+      # binding.pry
     end  
   end
   

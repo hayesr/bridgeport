@@ -8,9 +8,29 @@ h = {
 opts = h.values
 %>
 <div class="mercury-regions-panel">
-  <%= select_tag "regions[width]", options_for_select(opts), :style => 'display:none', :id => nil %>
-
-  <%= form_tag do %>
+  <div class="region_controls_template" style="display:none">
+    <div class="field">
+      <label>Label</label>
+      <%= text_field_tag "regions[label]", nil, :class => 'label_control' %>
+    </div>
+    <div class="field">
+      <label>Width</label>
+      <%= select_tag "regions[width]", options_for_select(opts), :id => nil, :class => 'width_control' %>
+    </div>
+    <div class="field">
+      <label>Position</label>
+      <%= select_tag "regions[position]", options_for_select([1, 2, 3]), :id => nil, :class => 'position_control' %>
+    </div>
+    <div class="button">
+      <%= button_tag "Delete this region", :class => 'delete_region' %>
+    </div>
+  </div>
+  
+  <%= form_tag :action => nil do %>
     
   <% end %>
+  
+  <div class="field">
+    <%= button_tag "Add Region"%>
+  </div>
 </div>

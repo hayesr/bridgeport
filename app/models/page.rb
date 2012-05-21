@@ -13,7 +13,7 @@ class Page < AbstractDocument
   field :grants, :type => Hash, :default => {}
   
   embeds_many :regions
-  accepts_nested_attributes_for :regions, autosave: true
+  accepts_nested_attributes_for :regions, autosave: true, allow_destroy: true
   
   # default_scope asc(:position)
   
