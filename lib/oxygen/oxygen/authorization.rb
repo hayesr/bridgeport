@@ -11,7 +11,7 @@ module Oxygen
     end
     
     def can?(action, record)
-      current_user.is? :admin || permission_granted_for?(action, resource)
+      current_user && ( current_user.is? :admin || permission_granted_for?(action, resource) )
     end
     
     def permission_granted_for?(action, record)
