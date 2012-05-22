@@ -21,16 +21,21 @@ opts = h.values
       <label>Position</label>
       <%= select_tag "regions[position]", options_for_select([1, 2, 3]), :id => nil, :class => 'position_control' %>
     </div>
-    <div class="button">
-      <%= button_tag "Delete this region", :class => 'delete_region' %>
-    </div>
+
   </div>
   
   <%= form_tag :action => nil do %>
     
   <% end %>
   
+
+</div>
+
+<% content_for :nothing do %>
+  <div class="button">
+    <%= button_tag "Delete this region", :class => 'delete_region' %>
+  </div>
   <div id="add_region">
     <%= button_tag "Add Region"%>
   </div>
-</div>
+<% end %>

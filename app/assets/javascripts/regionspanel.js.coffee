@@ -83,7 +83,7 @@
         regionLabelControl(region, group)
         regionWidthControl(region, group)
         regionPositionControl(region, group)
-        regionDeleteControl(region, group)
+        # regionDeleteControl(region, group)
         # regionAddControl() 
         
     addRegionControls = (region) =>
@@ -94,4 +94,4 @@
     @regions.find('.mercury-region').each (i,r) =>
         region = $(r)   
         addRegionControls(region)
-        regionAddControl()
+        # regionAddControl()
