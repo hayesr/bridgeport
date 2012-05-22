@@ -12,6 +12,11 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   
+  desc "Link-up the image uploads dir"
+  task :uploads_link do
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+  end
+  
   desc "Set proper rights"
   task :ownership do
     run "chown -R apache: /var/www/rails/#{application}"
@@ -23,5 +28,5 @@ end
 #   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
 # end
 
-# after "deploy:update_code", "deploy:symlink_config"
+after "deploy:update_code", "deploy:uploads_link"
 after "deploy:update_code", "deploy:ownership"
