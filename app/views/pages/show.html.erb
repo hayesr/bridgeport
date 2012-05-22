@@ -1,5 +1,5 @@
 <div class="container">
-  <section id="<%= @page.slug.nil? ? "new_page" : @page.slug %>">
+  <section id="<%= @page.try(:slug) %>">
     <div class="row">
       <header class="twelve columns">
         <h1 id="title"><%= @page.title %></h1>
