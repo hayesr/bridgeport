@@ -2,10 +2,10 @@
   <section id="<%= @page.try(:slug) %>">
     <div class="row">
       <header class="twelve columns">
-        <h1 id="title"><%= @page.title %></h1>
+        <h1 id="title"><%= @page.try(:title) %></h1>
       </header>
     </div>
-    <% if @page.regions.any? %>
+    <% if @page.try(:regions) && @page.regions.any? %>
     <div class="row">
       <% @page.sorted_regions.each do |r| %>
       <div class="<%= "#{r.label} #{r.width}" %> columns">
