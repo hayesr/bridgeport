@@ -37,6 +37,9 @@ gem 'cancan'
 # Dev Console
 gem 'pry-rails', :group => :development
 
+gem 'capistrano'
+gem 'capistrano-ext'
+
 group :test, :development do
   gem "guard"
   gem 'guard-livereload'
