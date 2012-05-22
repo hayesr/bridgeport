@@ -23,7 +23,7 @@ class Admin::PagesController < ApplicationController
   end
   
   def create
-    parse_mercury_create
+    parse_mercury_update
     
     @page = Page.new(params[:page])
     
@@ -69,11 +69,10 @@ class Admin::PagesController < ApplicationController
       params[:content].each do |k,v|        
         unless v[:data][:destroy]
           params[:page][:regions] << {
-            :id => k, :body => v[:value], 
+            :body => v[:value], 
             :position => v[:data][:position].to_i, 
             :width => v[:data][:width], 
             :label => v[:data][:label],
-            :_destroy => v[:data][:destroy]
           }
         end
       end

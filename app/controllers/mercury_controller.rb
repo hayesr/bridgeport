@@ -37,6 +37,10 @@ class MercuryController < ActionController::Base
   def record
     record_id = request.path.split('/').last
     klass = request.path.split('/')[-2].singularize.capitalize.constantize
-    record = klass.find(record_id)
+    if record_id == 'new'
+      record = klass.new
+    else
+      record = klass.find(record_id)
+    end
   end
 end

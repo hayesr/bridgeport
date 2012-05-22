@@ -6,7 +6,7 @@
       </header>
     </div>
     <% if @page.regions.any? %>
-    <div class="row">
+    <div id="regions" class="row">
       <% @page.sorted_regions.each_with_index do |r, i| %>
       <div class="<%= "#{r.label} #{r.width}" %> columns">
         <div id="<%= r.id %>" class="mercury-region" data-type="editable" data-position="<%= i %>" data-width="<%= r.width %>" data-label="<%= r.label %>">
@@ -16,5 +16,13 @@
       <% end %>
     </div>
     <% end %>
+    
+
+      <div id="region_template" class="two columns" style="display:none">
+        <div id="0" class="new-region" data-label="new_region" data-type="editable" data-position="3" data-width="two">
+          <p>Replace this text</p>
+        </div>
+      </div>
+    
   </section>
 </div>

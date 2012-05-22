@@ -2,6 +2,7 @@
 
 @Mercury.dialogHandlers.regionsPanel = ->
     
+    # @select = @element.find('select')
     @form = @element.find('form')
     @controlTemplate = @element.find('.region_controls_template')
     @iframe = jQuery('#mercury_iframe').contents()
@@ -36,6 +37,7 @@
     addRegion = () =>
         column = @regionTemplate.clone()
         region = column.find('.new-region')
+        # balanceWidths(region, 4)
         region.replaceClasses(['mercury-region'])
         changeRegionWidth(region, 6)
         column.removeAttr('id')
@@ -56,6 +58,9 @@
         select.val(classNameToNumber(region.data('width')))
         select.on 'change', ->
             changeRegionWidth(region, $(@).val())
+            # newWidth = numberToClassName($(@).val())
+            # region.attr('data-width', newWidth)
+            # region.parent().replaceClasses([region.data('label'), newWidth, 'columns'])
     
     regionPositionControl = (region, group) ->
         select = group.find('.position_control')
@@ -84,7 +89,7 @@
         regionWidthControl(region, group)
         regionPositionControl(region, group)
         regionDeleteControl(region, group)
-        # regionAddControl() 
+        regionAddControl() # perhaps there's doubles because this is registered once for every region
         
     addRegionControls = (region) =>
         group = @controlTemplate.clone()
@@ -94,4 +99,29 @@
     @regions.find('.mercury-region').each (i,r) =>
         region = $(r)   
         addRegionControls(region)
-        regionAddControl()
+        # group = @controlTemplate.clone()
+        # configRegionControls(region, group)
+        # group.appendTo(@form).show()
+        
+    #     
+    #     region = $(r)
+    #     
+    #     label = region.data('label') + '-width'
+    #     # currentWidth = region.data('width')
+    #     newSelect = @select.clone()
+    #         .attr({ name: label, id: label })
+    #         .val(classNameToNumber(region.data('width')))
+    #     newSelect.on 'change', ->
+    #         
+    #         newWidth = numberToClassName($(@).val())
+    #         $(region).attr('data-width', newWidth)
+    #         $(region).parent()
+    #             .removeClass( (i,c) -> c )
+    #             .addClass(region.data('label') + ' ' + newWidth + ' columns')
+    #         
+    #     newField = $('<div/>', {class: 'field'})
+    #     newLabel = $('<label for="' + label + '">width</label>')
+    #     newLabel.appendTo(newField)
+    #     newSelect.appendTo(newField).show()
+    #     newField.appendTo(@form)
+        
