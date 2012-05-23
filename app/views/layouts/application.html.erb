@@ -44,16 +44,20 @@
   <div id="main">
     <% unless notice.nil? && alert.nil? %>
     <div id="messages">
-      <% unless notice.nil? %>
-      <div class="notice">
-        <%= notice %>
+      <div class="container">
+        <div class="row">
+          <% unless notice.nil? %>
+          <div class="notice">
+            <%= notice %>
+          </div>
+          <% end %>
+          <% unless alert.nil? %>
+          <div class="alert">
+            <%= alert %>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <% end %>
-      <% unless alert.nil? %>
-      <div class="alert">
-        <%= alert %>
-      </div>
-      <% end %>
     </div>
     <% end %>
     
