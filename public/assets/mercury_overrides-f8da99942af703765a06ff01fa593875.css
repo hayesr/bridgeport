@@ -1,7 +1,0 @@
-.mercury-images-panel{width:400px;}.mercury-images-panel input.filter{outline:none;font-size:1em;width:100%;padding-left:20px;margin-bottom:2em;background-color:#FFF;background-repeat:no-repeat;}
-.mercury-images-panel ul{list-style:none;margin:0;}.mercury-images-panel ul li{border-bottom:1px solid #ccc;padding-bottom:1em;margin-bottom:1em;zoom:1;}.mercury-images-panel ul li:before,.mercury-images-panel ul li:after{content:"";display:table;}
-.mercury-images-panel ul li:after{clear:both;}
-.mercury-images-panel ul li img{max-width:100px;height:auto;float:left;margin-right:1em;}
-.mercury-regions-panel{width:250px;}.mercury-regions-panel .region_controls_template{padding-bottom:1em;border-bottom:1px solid #ccc;margin-bottom:1em;float:left;}.mercury-regions-panel .region_controls_template .field{float:left;}
-.mercury-regions-panel .region_controls_template .delete_region{clear:both;}
-.mercury-regions-panel .region_controls_template label{display:block;}
