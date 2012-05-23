@@ -47,4 +47,12 @@ class Devise::SessionsController < DeviseController
   def auth_options
     { :scope => resource_name, :recall => "#{controller_path}#new" }
   end
+  
+  def home_path
+    user_home_path
+  end
+  
+  def user_home_path
+    admin_pages_path
+  end
 end
