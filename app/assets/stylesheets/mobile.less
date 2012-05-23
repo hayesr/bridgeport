@@ -317,22 +317,22 @@ body > footer{
 // ----------------------------- //
 
 #messages{
-    // background-color: @grey1;
+    background-color: #fff;
     padding: 1em 0;
     font-size: 16px;
     text-shadow: 0 1px 0 fade(#000, 20%);
     .notice, .alert{
         padding: 0.5em 2em;
         margin-bottom: 1em;
-        .border-radius(16px);
     }
     .notice{
-        color: mix(@green1, @white, 10%);
-        background-color: fade(@green1, 80%);
-        
+        color: @green1;
+        border-bottom: 1px solid fade(@green2, 20%);
+        background-color: fade(@green1, 10%);
     }
     .alert{
-        color: mix(@red, @white, 10%);
-        background-color: saturate(@red, 20%);
+        color: @red;
+        border-bottom: 1px solid fade(@red, 20%);
+        background-color: fade(@red, 10%);
     }
 }
