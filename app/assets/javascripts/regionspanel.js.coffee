@@ -19,11 +19,27 @@
         classNames[num]
     classNameToNumber = (className) ->
         classNames.indexOf(className)
-    
+        
     changeRegionWidth = (region, width) ->
         newWidth = numberToClassName(width)
-        region.attr('data-width', newWidth)
+        region.changeData('width', newWidth)
         region.parent().replaceClasses([region.data('label'), newWidth, 'columns'])
+        
+    changeRegionLabel = (region, label) ->
+        region.changeData('label', label)
+        region.parent().replaceClasses([label, region.data('width'), 'columns'])
+    
+    changeRegionPosition = (region, pos) ->
+        region.changeData('position', pos)
+        
+    changeRegionAttrs = (region, label, width, pos) ->
+        changeRegionWidth(region, width)
+        changeRegionLabel(region, label)
+        changeRegionPosition(region, pos)
+        
+    deleteRegion = (region) ->
+        region.attr('data-destroy', 'true')
+        region.hide()
         
     balanceWidths = (holdRegion, numColumns) =>
         flexWidth = 12 - classNameToNumber(holdRegion.data('width'))
@@ -47,9 +63,8 @@
         label = group.find('.label_control')
         label.val(region.data('label'))
         label.on 'blur', ->
-            new_label = $(@).val()
-            region.attr('data-label', new_label)
-            region.parent().replaceClasses([new_label, region.data('width'), 'columns'])
+            changeRegionLabel(region, $(@).val())
+
     
     regionWidthControl = (region, group) ->
         select = group.find('.width_control')
@@ -62,13 +77,12 @@
         select.val(region.data('position'))
         select.on 'change', ->
             newPos = $(@).val()
-            region.attr('data-position', newPos)
+            changeRegionPosition(region, newPos)
     
     regionDeleteControl = (region, group) ->
         button = group.find('.delete_region')
         button.on 'click', (event) ->
-            region.attr('data-destroy', 'true')
-            region.hide()
+            deleteRegion(region)
             event.preventDefault()
             @parent('.region_controls_template').slideUp()
             
@@ -83,8 +97,6 @@
         regionLabelControl(region, group)
         regionWidthControl(region, group)
         regionPositionControl(region, group)
-        # regionDeleteControl(region, group)
-        # regionAddControl() 
         
     addRegionControls = (region) =>
         group = @controlTemplate.clone()
