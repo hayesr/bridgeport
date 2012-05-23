@@ -1,10 +1,8 @@
 class Admin::PagesController < ApplicationController
   
-  # include Oxygen::Authorization
-  
-  layout :admin_layout
-  
+  before_filter :authenticate_user!  
   before_filter :load_root_nav
+  layout :admin_layout
   
   def index
     # @pages = Page.roots

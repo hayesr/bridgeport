@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   
-  before_filter :load_root_nav
-  
+  before_filter :authenticate_user!
+  before_filter :load_root_nav  
   layout 'admin'
   
   def index
