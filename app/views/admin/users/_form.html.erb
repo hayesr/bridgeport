@@ -39,7 +39,7 @@
     </div>
     <div class="four columns">
       <ul>
-      <% %w{admin creator editor}.each do |role| %>
+      <% %w{admin editor}.each do |role| %>
         <li><%= check_box_tag 'user[roles][]', role, @user.roles.include?(role), :id => "#{role}_role"  %> <%= role %></li>
       <% end %>
       </ul>

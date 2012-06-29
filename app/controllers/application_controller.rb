@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     @roots = Page.roots.asc(:position)
   end
   
+  def edit_mode?
+    !!params[:mercury_frame]
+  end
+  
+  helper_method :edit_mode?
+  
 end

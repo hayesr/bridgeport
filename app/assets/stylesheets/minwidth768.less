@@ -64,8 +64,13 @@ ul.columns{
 
 #page > #main{
     padding-bottom: 4em;
-    .column, .columns{
-        .transition(width, .6s);
+}
+
+body.edit{
+    #page > #main{
+        .column, .columns{
+            .transition(width, .6s);
+        }
     }
 }
 
@@ -191,4 +196,22 @@ ol.page_sorter{
             }
         }
     }
+}
+
+// ----------------------------- //
+//    Editor
+// ----------------------------- //
+
+.region-label{
+    font-size: 13px;
+    text-align: left;
+    width: 30%;
+    color: fade(#125BAA, 40%);
+    // background-color: #DAEDFF;
+    background-color: fade(#09f, 4%);
+    padding: 0.25em;
+    outline: 1px dotted #09f;
+    margin-bottom: 1px;
+    // border: 1px dotted #09f;
+    border-bottom: none;
 }

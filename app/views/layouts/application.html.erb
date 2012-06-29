@@ -21,7 +21,8 @@
   <% end %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body<%= edit_mode_class %>>
   <%= content_for :admin %>
 <div id="page">
   <header>

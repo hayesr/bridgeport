@@ -11,7 +11,7 @@ opts = h.values
   <div class="region_controls_template" style="display:none">
     <div class="field">
       <label>Label</label>
-      <%= text_field_tag "regions[label]", nil, :class => 'label_control' %>
+      <%= select_tag "regions[label]", options_for_select([nil, 'primary', 'sidebar']), :class => 'label_control' %>
     </div>
     <div class="field">
       <label>Width</label>
@@ -21,21 +21,21 @@ opts = h.values
       <label>Position</label>
       <%= select_tag "regions[position]", options_for_select([1, 2, 3]), :id => nil, :class => 'position_control' %>
     </div>
-
+    <div class="button">
+      <%= button_tag "Delete this region", :class => 'delete_region' %>
+    </div>
   </div>
   
   <%= form_tag do %>
     
   <% end %>
-  
+
 
 </div>
 
-<% content_for :nothing do %>
-  <div class="button">
-    <%= button_tag "Delete this region", :class => 'delete_region' %>
-  </div>
-  <div id="add_region">
-    <%= button_tag "Add Region"%>
-  </div>
+<% if false %>
+<div id="add_region">
+  <%= button_tag "Add Region"%>
+</div>
+
 <% end %>

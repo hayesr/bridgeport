@@ -12,6 +12,7 @@ Schoolcms::Application.routes.draw do
       post :sort, :on => :collection
     end
     resources :users
+    match '' => 'pages#index'
   end
   
   resources :pages, :only => [:index, :show]

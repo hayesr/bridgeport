@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require mercury
 //= require custom_extensions
+//= require oxygen_region
 //= require regionspanel
 //= require imagespanel

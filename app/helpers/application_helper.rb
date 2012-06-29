@@ -17,4 +17,10 @@ module ApplicationHelper
     
   end
   
+  def edit_mode_class
+    if edit_mode?
+      raw ' class="edit" '
+    end
+  end
+  
 end
