@@ -8,10 +8,11 @@ h = {
 opts = h.values
 %>
 <div class="mercury-regions-panel">
+  
   <div class="region_controls_template" style="display:none">
     <div class="field">
       <label>Label</label>
-      <%= select_tag "regions[label]", options_for_select([nil, 'primary', 'sidebar']), :class => 'label_control' %>
+      <%= text_field_tag "regions[label]", nil, :class => 'label_control' %>
     </div>
     <div class="field">
       <label>Width</label>
@@ -26,16 +27,17 @@ opts = h.values
     </div>
   </div>
   
-  <%= form_tag do %>
+  <form>
     
-  <% end %>
+  </form>
+  <div id="add_region">
+    <%= button_tag "Add Region"%>
+  </div>
 
 
 </div>
 
 <% if false %>
-<div id="add_region">
-  <%= button_tag "Add Region"%>
-</div>
+
 
 <% end %>
