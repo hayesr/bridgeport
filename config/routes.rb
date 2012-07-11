@@ -5,7 +5,8 @@ Schoolcms::Application.routes.draw do
     get '/signout' => 'devise/sessions#destroy'
   end
 
-  Mercury::Engine.routes
+  # Mercury::Engine.routes
+  mount Mercury::Engine => '/'
   
   namespace :admin do
     resources :pages, :except => 'edit' do
@@ -16,6 +17,10 @@ Schoolcms::Application.routes.draw do
   end
   
   resources :pages, :only => [:index, :show]
+  
+  namespace :mercury do
+    resources :images
+  end
   
   root :to => 'pages#index'
 

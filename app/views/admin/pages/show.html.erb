@@ -2,14 +2,14 @@
   <section id="<%= @page.slug %>">
     <div class="row">
       <header class="twelve columns">
-        <h1 id="title" class="mercury-region" data-type="simple"><%= @page.title %></h1>
+        <h1 id="title" class="mercury-region" data-mercury="simple"><%= @page.title %></h1>
       </header>
     </div>
     <% if @page.regions.any? %>
     <div id="regions" class="regions row">
       <% @page.sorted_regions.each_with_index do |r, i| %>
       <div class="<%= "#{r.label} #{r.width}" %> columns">
-        <div id="<%= r.id %>" class="mercury-region" data-type="editable" data-position="<%= i+1 %>" data-width="<%= r.width %>" data-label="<%= r.label %>">
+        <div id="<%= r.id %>" class="mercury-region" data-mercury="full" data-position="<%= i+1 %>" data-width="<%= r.width %>" data-label="<%= r.label %>">
           <%= raw r.body %>
         </div>
       </div>
