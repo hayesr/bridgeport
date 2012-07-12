@@ -59,14 +59,27 @@ class Oxygen.RegionRow
             @_regions.map (reg,i) ->
                 { id: reg.id, position: reg.position() }
                 
+        @prepRegion = (newReg) =>
+            # newReg.attr('data-mercury', 'full')
+            # newReg.attr('data-position', @_regions.length + 1)
+            # newReg.attr('data-mercury', 'full')
+            # newReg.attr('data-width', 'two')
+            # newReg.attr('data-mercury', 'full')
+            newReg.attr({
+                id: 'new_region_' + (@_regions.length + 1),
+                class: 'mercury-region',
+                'data-mercury': 'full',
+                'data-position': @_regions.length + 1,
+                'data-width': 'two'
+                'data-label': 'new_region_' + (@_regions.length + 1)
+                })
+                
         @addRegion = () =>
             # clone template
             column = Oxygen.regionTemplate.clone()
-            newReg = column.find('.new-region')
-            newReg.replaceClasses(['mercury-region'])
+            newReg = @prepRegion( column.find('div') )
             column.insertAfter( @_regions[@_regions.length-1].region.parent() )
             column.removeAttr('id')
-            newReg.removeAttr('id')
             column.show()
             mercuryInstance.buildRegion(newReg)
             newWrapper = new Oxygen.RegionWrapper(newReg)
@@ -199,7 +212,7 @@ class Oxygen.RegionControlGroup
                 @group.slideUp()
                 
         @updateWidthVal = () ->
-            @label.val(@region.widthNum())
+            @width.val(@region.widthNum())
         
         @configControls = () =>
             @configLabelControl()
