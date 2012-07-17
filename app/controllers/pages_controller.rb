@@ -7,6 +7,8 @@ class PagesController < ApplicationController
   end
   
   def show
+    # raise 'slug'
+    # @page = Page.find_by_slug(params[:slug])
     @page = Page.find(params[:id])
   end
 end
