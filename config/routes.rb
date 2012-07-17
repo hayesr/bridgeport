@@ -22,6 +22,8 @@ Schoolcms::Application.routes.draw do
     resources :images
   end
   
+  # match '/:slug', :to => 'pages#show'
+  
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:
