@@ -34,6 +34,14 @@ describe Page do
       page_with_custom_slug.reload
       page_with_custom_slug.slug.should eq "this-is-my-slug"
     end
+    
+    it "Should set a nested slug based on parent" do
+      parent_page = Page.create(title: "Parent Page")
+      nested_page = Page.create(title: "Nested Page", parent: parent_page)
+      
+      nested_page.is_root?.should_not be true
+      nested_page.slug.should eq "parent-page/nested-page"
+    end
   end
   
   

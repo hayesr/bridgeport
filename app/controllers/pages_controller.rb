@@ -7,8 +7,11 @@ class PagesController < ApplicationController
   end
   
   def show
-    # raise 'slug'
-    # @page = Page.find_by_slug(params[:slug])
-    @page = Page.find(params[:id])
+    if params[:id]
+      @page = Page.find(params[:id])
+    else
+      @page = Page.find_by_slug(params[:slug])
+    end
   end
+  
 end

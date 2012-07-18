@@ -17,12 +17,18 @@ module Sluggable
   end
   
   def slugify
+    
     if self.slug.nil? || self.slug.empty?
       if self.class.slug_exists?(title.parameterize)
         title_slug = title.parameterize + "-1"
       else
         title_slug = title.parameterize
       end
+      
+      unless parent.nil?
+        title_slug = self.parent.slug + '/' + title_slug
+      end
+      
       write_attribute :slug, title_slug
     end
   end

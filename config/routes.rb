@@ -22,7 +22,7 @@ Schoolcms::Application.routes.draw do
     resources :images
   end
   
-  # match '/:slug', :to => 'pages#show'
+  match '*slug', :to => 'pages#show'
   
   root :to => 'pages#index'
 
