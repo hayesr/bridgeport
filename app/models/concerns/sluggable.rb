@@ -8,7 +8,8 @@ module Sluggable
   
   module ClassMethods
     def find_by_slug(slug)
-      where(:slug => slug).first
+      doc = where(:slug => slug).first
+      # raise Mongoid::Errors::DocumentNotFound.new(self, slug) if doc.nil?
     end
     
     def slug_exists?(slug)

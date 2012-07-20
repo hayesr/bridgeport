@@ -31,6 +31,10 @@ class Page < AbstractDocument
     
   end
   
+  # def to_param
+  #   slug
+  # end
+  
   def sorted_regions
     regions.asc(:position)
   end

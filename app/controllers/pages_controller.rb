@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     else
       @page = Page.find_by_slug(params[:slug])
     end
+    
   end
   
 end

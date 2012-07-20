@@ -34,8 +34,11 @@ gem 'kaminari'
 gem 'devise'
 gem 'cancan'
 
-# Dev Console
-gem 'pry-rails', :group => :development
+group :development do
+  # Dev Console
+  gem 'pry-rails'
+  gem 'pry-remote'
+end
 
 gem 'capistrano'
 gem 'capistrano-ext'

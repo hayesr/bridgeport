@@ -12,7 +12,8 @@ module ApplicationHelper
     if admin_mode
       path = admin_page_path(resource)
     else
-      path = page_path(resource)
+      # path = page_path(resource)
+      path = "#{resource.to_param}"
     end
     
   end
