@@ -30,15 +30,15 @@ body{
 }
 
 #page > header{
-    padding: 1em 0;
-    background-color: @red;
+    padding: 3em 0;
+    background-color: @purple1;
     hgroup{
         color: @white;
         text-shadow: 0 -1px 1px fade(@black, 50%);
         h1{
             .bold;
             line-height: 1;
-            margin-bottom: 0.5em;
+            margin-bottom: 1em;
         }
         h2{
             font-size: 16px;
@@ -51,7 +51,7 @@ body{
     //Navigation
 
     nav{
-        background-color: darken(@red, 5%);
+        background-color: darken(@purple1, 5%);
         margin: 0 0 1em 0;
         overflow:hidden;
         .border-radius(8px);
@@ -69,7 +69,7 @@ body{
                     display: block;
                     padding: 1.5em;
                     &:hover{
-                        background-color: darken(@red, 10%);
+                        background-color: darken(@purple1, 10%);
                     }
                     &:after{
                         content: "»";

@@ -1,4 +1,4 @@
-Schoolcms::Application.routes.draw do
+Bridgeport::Application.routes.draw do
   devise_for :users
   devise_scope :user do
     get '/signin' => 'devise/sessions#new'

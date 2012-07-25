@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: schoolcms_development
+  database: bridgeport_development
 
 test:
   host: localhost
-  database: schoolcms_test
+  database: bridgeport_test
 
 # set these environment variables on your prod server
 production:
@@ -12,7 +12,7 @@ production:
   # port: <%= ENV['MONGOID_PORT'] %>
   # username: <%= ENV['MONGOID_USERNAME'] %>
   # password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: schoolcms_production
+  database: bridgeport_production
   # slaves:
   #   - host: slave1.local
   #     port: 27018

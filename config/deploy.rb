@@ -4,7 +4,7 @@ set :stages, %w(production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 
-set :application, "schoolcms"
+set :application, "bridgeport"
 set :repository,  "set your repository location here"
 
 set :scm, :git

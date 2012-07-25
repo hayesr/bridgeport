@@ -14,7 +14,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Schoolcms
+module Bridgeport
   class Application < Rails::Application
     config.autoload_paths += %W(
           #{config.root}/app/controllers/concerns
