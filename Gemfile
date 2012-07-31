@@ -23,10 +23,10 @@ gem 'rmagick'
 gem 'liquid'
 
 # Database Stuff
-gem "mongoid", "~> 2.4"
-gem "bson_ext", "~> 1.4"
+gem "mongoid", "~> 3.0.2"
+# gem "bson_ext", "~> 1.4"
 gem "mongoid-ancestry"
-gem "mongoid_session_store"
+gem "mongoid_session_store", :git => 'https://github.com/fabricelejeune/mongoid_session_store.git'
 
 # Pagination
 gem 'kaminari'

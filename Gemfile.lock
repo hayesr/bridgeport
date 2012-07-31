@@ -1,6 +1,14 @@
 GIT
+  remote: https://github.com/fabricelejeune/mongoid_session_store.git
+  revision: 7267f4aa4385c2ae7f51ee91381d66d6def780dd
+  specs:
+    mongoid_session_store (2.1.0)
+      mongoid (~> 3.0.0.rc)
+      rails (~> 3.0)
+
+GIT
   remote: https://github.com/jejacks0n/mercury.git
-  revision: 481bc5e56872f2cb8767d223b93c11583313b4eb
+  revision: f1a52cbd166473ab9526caa410ef0612b38728d8
   specs:
     mercury-rails (0.8.0)
       coffee-rails
@@ -63,9 +71,9 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    carrierwave-mongoid (0.2.1)
-      carrierwave (~> 0.6.1)
-      mongoid (~> 2.1)
+    carrierwave-mongoid (0.1.0)
+      carrierwave
+      mongoid
     childprocess (0.3.4)
       ffi (~> 1.0, >= 1.0.6)
     coderay (1.0.7)
@@ -142,18 +150,15 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8)
     mime-types (1.19)
-    mongo (1.6.2)
-      bson (~> 1.6.2)
-    mongoid (2.4.12)
+    mongoid (3.0.3)
       activemodel (~> 3.1)
-      mongo (<= 1.6.2)
+      moped (~> 1.1)
+      origin (~> 1.0)
       tzinfo (~> 0.3.22)
     mongoid-ancestry (0.2.3)
       bson_ext (>= 1.3)
       mongoid (>= 2.0)
-    mongoid_session_store (2.1.0)
-      mongoid (~> 2.3)
-      rails (~> 3.0)
+    moped (1.2.0)
     multi_json (1.3.6)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -163,6 +168,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
+    origin (1.0.4)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -256,7 +262,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext (~> 1.4)
   cancan
   capistrano
   capistrano-ext
@@ -276,9 +281,9 @@ DEPENDENCIES
   less-rails
   liquid
   mercury-rails!
-  mongoid (~> 2.4)
+  mongoid (~> 3.0.2)
   mongoid-ancestry
-  mongoid_session_store
+  mongoid_session_store!
   pry-rails
   pry-remote
   rails (= 3.2.3)

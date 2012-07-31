@@ -7,8 +7,8 @@ class User
   devise :database_authenticatable, :rememberable, :trackable
 
   ## Database authenticatable
-  field :email,              :type => String, :null => false, :default => ""
-  field :encrypted_password, :type => String, :null => false, :default => ""
+  field :email,              :type => String, :default => ""
+  field :encrypted_password, :type => String, :default => ""
 
   ## Recoverable
   # field :reset_password_token,   :type => String
