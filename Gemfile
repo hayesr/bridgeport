@@ -20,6 +20,7 @@ gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'rmagick'
+gem 'liquid'
 
 # Database Stuff
 gem "mongoid", "~> 2.4"

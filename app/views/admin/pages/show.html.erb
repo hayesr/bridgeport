@@ -10,7 +10,11 @@
       <% @page.sorted_regions.each_with_index do |r, i| %>
       <div class="<%= "#{r.label} #{r.width}" %> columns">
         <div id="<%= r.id %>" class="mercury-region" data-mercury="full" data-position="<%= i+1 %>" data-width="<%= r.width %>" data-label="<%= r.label %>">
-          <%= raw r.body %>
+          <% if edit_mode? %>
+            <%= raw r.body %>
+          <% else %>
+            <%= raw r.body_with_links %>
+          <% end %>
         </div>
       </div>
       <% end %>

@@ -29,6 +29,10 @@ class Page < AbstractDocument
       position_branches(tree)
     end
     
+    def page_exists?(page)
+      where(_id: page).count > 0
+    end
+    
   end
   
   # def to_param
