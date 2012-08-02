@@ -13,7 +13,7 @@ class Admin::PagesController < ApplicationController
   def show
     # raise params[:id].to_s
     @page = Page.from_param(params[:id])
-    # raise Mongoid::Errors::DocumentNotFound.new(Page, params) if @page.nil?
+    render '/404.html' if @page.nil?
     
   end
   

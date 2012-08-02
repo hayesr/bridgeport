@@ -1,5 +1,6 @@
 module Slugged
   extend ActiveSupport::Concern
+  include ActiveSupport::Inflector
   
   included do
     field :_slugs, type: Array, default: []
@@ -30,26 +31,30 @@ module Slugged
   end
   
   def slug=(slug_str)
-    new_slug = slugify(slug_str)  
-    write_attribute :_slugs, ( _slugs | [new_slug] )
+    new_slug = build_slug(slug_str)  
+    write_attribute :_slugs, ( _slugs | [new_slug] ).compact
   end
   
   def slug
     _slugs.last
   end
   
-  def slugify(slug_str)
-    if self.class.slug_exists?(slug_str.parameterize)
-      new_slug = slug_str.parameterize + "-1"
-    else
-      new_slug = slug_str.parameterize
+  def build_slug(slug_str)
+    
+    new_slug = slugify(slug_str)
+
+    unless _slugs.include? new_slug
+      if self.class.slug_exists?(new_slug)
+        new_slug << "-1"
+      end
     end
     
-    unless parent.nil?
+    unless parent.nil? || _slugs.include?(self.parent.slug + '/' + new_slug)
       new_slug = self.parent.slug + '/' + new_slug
     end
     
     new_slug
+    
   end
   
   def save_slug
@@ -57,4 +62,39 @@ module Slugged
   end
   
   
+  def slugify(str, sep = '-')
+    # replace accented chars with their ascii equivalents
+    parameterized_string = transliterate(str)
+    # Turn unwanted chars into the separator
+    parameterized_string.gsub!(/[^a-z0-9\-\/_]+/i, sep)
+    parameterized_string.gsub!(/[^a-z0-9\-_]+/i, sep)
+    unless sep.nil? || sep.empty?
+      re_sep = Regexp.escape(sep)
+      # No more than one of the separator in a row.
+      parameterized_string.gsub!(/#{re_sep}{2,}/, sep)
+      # Remove leading/trailing separator.
+      parameterized_string.gsub!(/^#{re_sep}|#{re_sep}$/i, '')
+    end
+    parameterized_string.downcase
+  end
+  
+  # def parameterize(string, sep = '-')
+  #   # replace accented chars with their ascii equivalents
+  #   parameterized_string = transliterate(string)
+  #   # Turn unwanted chars into the separator
+  #   parameterized_string.gsub!(/[^a-z0-9\-_]+/i, sep)
+  #   unless sep.nil? || sep.empty?
+  #     re_sep = Regexp.escape(sep)
+  #     # No more than one of the separator in a row.
+  #     parameterized_string.gsub!(/#{re_sep}{2,}/, sep)
+  #     # Remove leading/trailing separator.
+  #     parameterized_string.gsub!(/^#{re_sep}|#{re_sep}$/i, '')
+  #   end
+  #   parameterized_string.downcase
+  # end
 end
+
+# On creation save slug
+# If the title changes, save a new slug
+# If the slug already exists, modify it
+# If the page is repositioned, modify the slug
