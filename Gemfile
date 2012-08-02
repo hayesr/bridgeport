@@ -25,7 +25,7 @@ gem 'liquid'
 # Database Stuff
 gem "mongoid", "~> 3.0.2"
 # gem "bson_ext", "~> 1.4"
-gem "mongoid-ancestry"
+gem "mongoid-ancestry", :path => '~/code/github/mongoid-ancestry'
 gem "mongoid_session_store", :git => 'https://github.com/fabricelejeune/mongoid_session_store.git'
 
 # Pagination
