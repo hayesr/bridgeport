@@ -7,7 +7,6 @@ class MercuryController < ActionController::Base
   layout false
 
   def edit
-    # binding.pry
     render :text => '', :layout => 'mercury'
   end
 
@@ -40,7 +39,7 @@ class MercuryController < ActionController::Base
     if record_id == 'new'
       record = klass.new
     else
-      record = klass.find(record_id)
+      record = klass.from_param(record_id)
     end
   end
 end

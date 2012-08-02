@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   
   def show
     if params[:id]
-      @page = Page.find(params[:id])
+      @page = Page.from_param(params[:id])
     else
       @page = Page.find_by_slug(params[:slug])
     end

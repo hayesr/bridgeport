@@ -17,18 +17,18 @@ class Region
     body.gsub(/(.?)\[\[(.+?)\]\]([^\[]?)/m) do
       if $2.include?('|')
         parts = $2.split('|')
-        href = parts[1].parameterize
+        slug = parts[1].parameterize
         text = parts[0].titleize
       else
-        href = $2.parameterize
+        slug = $2.parameterize
         text = $2.humanize
       end
-      if Page.page_exists?(href)
+      if Page.page_exists?(slug)
         presence = "present"
       else
         presence = 'absent'
       end
-      link = "<a href=\"/pages/#{href}\" class=\"#{presence}\">#{text}</a>"
+      link = "<a href=\"/#{slug}\" class=\"#{presence}\">#{text}</a>"
       "#{$1}#{link}#{$3}"
     end
   end

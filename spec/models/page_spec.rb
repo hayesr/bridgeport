@@ -42,6 +42,10 @@ describe Page do
       nested_page.is_root?.should_not be true
       nested_page.slug.should eq "parent-page/nested-page"
     end
+    
+    it "Should remember old slugs" do
+      
+    end
   end
   
   

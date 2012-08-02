@@ -1,3 +1,5 @@
+# require 'bson/object_id'
+
 class Page < AbstractDocument
   include Mongoid::Versioning
   # include Mongoid::Tree
@@ -24,20 +26,28 @@ class Page < AbstractDocument
       where(title: 'Home').first
     end
     
+    def from_param(param)
+      if Moped::BSON::ObjectId.legal? param
+        find(param)
+      else
+        where(slug: param).first
+      end
+    end
+    
     def process_positions(params)
       tree = organize_position_params(params)
       position_branches(tree)
     end
     
-    def page_exists?(page)
-      where(_id: page).count > 0
+    def page_exists?(slug)
+      where(slug: slug).count > 0
     end
     
   end
   
-  # def to_param
-  #   slug
-  # end
+  def to_param
+    slug
+  end
   
   def sorted_regions
     regions.asc(:position)

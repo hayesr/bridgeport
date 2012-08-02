@@ -9,7 +9,7 @@
     <div class="row">
       <% @page.sorted_regions.each do |r| %>
       <div class="<%= "#{r.label} #{r.width}" %> columns">
-        <%= raw r.body %>
+        <%= raw r.body_with_links %>
       </div>
       <% end %>
     </div>

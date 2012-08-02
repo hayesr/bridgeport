@@ -11,7 +11,7 @@ class Admin::PagesController < ApplicationController
   end
   
   def show
-    @page = Page.find(params[:id])
+    @page = Page.from_param(params[:id])
     # authorize :edit, @page
     
   end
@@ -36,7 +36,7 @@ class Admin::PagesController < ApplicationController
   def update
     parse_mercury_update
     
-    @page = Page.find(params[:id])
+    @page = Page.from_param(params[:id])
     
     if @page.update_attributes(params[:page])
       # redirect_to admin_page_path(@page)
@@ -64,6 +64,7 @@ class Admin::PagesController < ApplicationController
     if params[:content]
       title = params[:content].delete(:title)
       params[:page] = {:title => title[:value], :regions => []}
+      params[:page][:slug] = title[:value].parameterize
       params[:content].each do |k,v|        
         unless v[:data][:destroy]
           params[:page][:regions] << {
@@ -74,25 +75,9 @@ class Admin::PagesController < ApplicationController
           }
         end
       end
-      # binding.pry
     end  
   end
   
-  def parse_mercury_create
-    if params[:content]
-      title = params[:content].delete(:title)
-      params[:page] = {:title => title[:value], :regions => []}
-      params[:content].each do |k,v|
-        params[:page][:regions] << {
-          :body => v[:value], 
-          :position => v[:data][:position].to_i, 
-          :width => v[:data][:width], 
-          :label => v[:data][:label]
-        }
-      end
-    end
-    
-  end
   
   def admin_layout
     params[:mercury_frame] ? 'application' : 'admin'
