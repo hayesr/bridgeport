@@ -68,3 +68,14 @@ test:
         consistency: :strong
   options:
     identity_map_enabled: true
+    
+production:
+  sessions:
+    default:
+      database: bridgeport_production
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+    identity_map_enabled: true
