@@ -11,8 +11,9 @@ class Admin::PagesController < ApplicationController
   end
   
   def show
+    # raise params[:id].to_s
     @page = Page.from_param(params[:id])
-    # authorize :edit, @page
+    # raise Mongoid::Errors::DocumentNotFound.new(Page, params) if @page.nil?
     
   end
   
@@ -47,7 +48,7 @@ class Admin::PagesController < ApplicationController
   end
   
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.from_param(params[:id])
     @page.destroy
     redirect_to admin_pages_path
   end

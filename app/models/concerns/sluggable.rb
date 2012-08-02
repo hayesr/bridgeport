@@ -2,6 +2,7 @@ module Sluggable
   extend ActiveSupport::Concern
   
   included do
+    field :_slugs, type: Array, default: []
     field :slug
     before_save :slugify
   end
@@ -31,7 +32,13 @@ module Sluggable
       end
       
       write_attribute :slug, title_slug
+      new_slug = title_slug
     end
+  end
+  
+  def new_slug=(slug)
+    slugified_slug = slugify(slug)
+    write_attribute :_slugs, ( _slugs | [slugified_slug] )
   end
   
 end

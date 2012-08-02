@@ -5,7 +5,7 @@ class Page < AbstractDocument
   # include Mongoid::Tree
   # include Mongoid::Tree::Ordering # => Adds default scope asc(:position)
   include Mongoid::Ancestry
-  include Sluggable
+  include Slugged
   
   has_ancestry
   
@@ -30,7 +30,7 @@ class Page < AbstractDocument
       if Moped::BSON::ObjectId.legal? param
         find(param)
       else
-        where(slug: param).first
+        find_by_slug(param)
       end
     end
     
@@ -43,10 +43,6 @@ class Page < AbstractDocument
       where(slug: slug).count > 0
     end
     
-  end
-  
-  def to_param
-    slug
   end
   
   def sorted_regions

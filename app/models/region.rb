@@ -17,7 +17,7 @@ class Region
     body.gsub(/(.?)\[\[(.+?)\]\]([^\[]?)/m) do
       if $2.include?('|')
         parts = $2.split('|')
-        slug = parts[1].parameterize
+        slug = parts[1].parameterize('/')
         text = parts[0].titleize
       else
         slug = $2.parameterize

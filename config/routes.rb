@@ -22,7 +22,9 @@ Bridgeport::Application.routes.draw do
     resources :images
   end
   
-  match '*slug', :to => 'pages#show'
+  match '/admin/pages/*id', :to => 'admin/pages#show'
+  match '*id', :to => 'pages#show'
+  
   
   root :to => 'pages#index'
 
