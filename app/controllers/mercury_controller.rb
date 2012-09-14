@@ -33,13 +33,24 @@ class MercuryController < ActionController::Base
     redirect_to "/#{params[:requested_uri]}", notice: "Sorry you can't edit that." unless can?(:edit, record)
   end
   
+  # def record
+  #   record_id = request.path.split('/').last
+  #   klass = request.path.split('/')[-2].singularize.capitalize.constantize
+  #   if record_id == 'new'
+  #     record = klass.new
+  #   else
+  #     record = klass.from_param(record_id)
+  #   end
+  # end
   def record
     record_id = request.path.split('/').last
-    klass = request.path.split('/')[-2].singularize.capitalize.constantize
+    # klass = request.path.split('/')[-2].singularize.capitalize.constantize
     if record_id == 'new'
-      record = klass.new
+      record = Page.new
     else
-      record = klass.from_param(record_id)
+      record = Page.from_param(record_id)
     end
   end
+  
+  
 end
