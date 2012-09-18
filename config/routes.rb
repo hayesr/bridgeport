@@ -22,7 +22,8 @@ Bridgeport::Application.routes.draw do
     resources :images
   end
   
-  match '/admin/pages/*id', :to => 'admin/pages#show'
+  get '/admin/pages/*id', :to => 'admin/pages#show'
+  put '/admin/pages/*id', :to => 'admin/pages#update'
   match '*id', :to => 'pages#show'
   
   

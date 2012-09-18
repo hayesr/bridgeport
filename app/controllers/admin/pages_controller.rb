@@ -43,7 +43,7 @@ class Admin::PagesController < ApplicationController
       # redirect_to admin_page_path(@page)
       render text: ""
     else
-      # render action: "edit"
+      render text: "Error"
     end
   end
   
