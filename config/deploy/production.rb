@@ -14,7 +14,7 @@ namespace :deploy do
   
   desc "Link-up the image uploads dir"
   task :uploads_link do
-    run "ln -fs #{shared_path}/uploads #{release_path}/public/uploads"
+    run "mv #{release_path}/public/uploads #{release_path}/public/dev_uploads && ln -s #{shared_path}/uploads #{release_path}/public/uploads"
   end
   
   desc "Set proper rights"
