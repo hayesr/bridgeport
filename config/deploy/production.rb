@@ -9,12 +9,12 @@ namespace :deploy do
 
   desc "Link-up the db config"
   task :symlink_config do
-    run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
+    run "ln -fs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
   end
   
   desc "Link-up the image uploads dir"
   task :uploads_link do
-    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+    run "ln -fs #{shared_path}/uploads #{release_path}/public/uploads"
   end
   
   desc "Set proper rights"
