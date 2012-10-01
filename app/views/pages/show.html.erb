@@ -1,10 +1,12 @@
 <div class="container">
   <section id="<%= @page.try(:slug) %>">
+    <% unless !!(@page.try(:title) =~ /home/i) %>
     <div class="row">
       <header class="twelve columns">
         <h1 id="title"><%= @page.try(:title) %></h1>
       </header>
     </div>
+    <% end %>
     <% if @page.try(:regions) && @page.regions.any? %>
     <div class="row">
       <% @page.sorted_regions.each do |r| %>
