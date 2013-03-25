@@ -6,7 +6,7 @@ It's still a work in progress.
 
 
 ##### Why MongoDB?
-Is it because the Interwebz said it has WEBSCALE?? :scream: ÑNo. In CMS's I've worked with in the past, when a page is rendered a bunch of joins are performed to get the main content and various blocks and pieces together. The idea of a schema-less document-store database seems to fit better here. Plus, building anything without worrying about the schema is wonderful.
+Is it because the Interwebz said it has WEBSCALE?? :scream: â€”No. In CMS's I've worked with in the past, when a page is rendered a bunch of joins are performed to get the main content and various blocks and pieces together. The idea of a schema-less document-store database seems to fit better here. Plus, building anything without worrying about the schema is wonderful.
 
 ##### Why Mercury Editor?
 My use case involves users who are pretty confortable with M$ Word, but the notion of admin-modes and TinyMCE boxes is hard for them to follow. It's a huge usability boost when the final content looks exactly like it did when they entered the content.
