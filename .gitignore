@@ -17,3 +17,5 @@
 
 # Ignore uploaded files
 /public/uploads
+
+/config/initializers/secret_token.rb
