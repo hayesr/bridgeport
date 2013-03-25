@@ -7,13 +7,6 @@ GIT
       rails (~> 3.0)
 
 GIT
-  remote: https://github.com/hayesr/mongoid-ancestry.git
-  revision: 45647e6b62f9d8e31fb93288d04636e3702bb6b8
-  specs:
-    mongoid-ancestry (0.3.0.rc)
-      mongoid (>= 3.0.0.rc)
-
-GIT
   remote: https://github.com/jejacks0n/mercury.git
   revision: f1a52cbd166473ab9526caa410ef0612b38728d8
   specs:
@@ -159,6 +152,8 @@ GEM
       moped (~> 1.1)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    mongoid-ancestry (0.3.0)
+      mongoid (~> 3.0.3)
     moped (1.2.0)
     multi_json (1.3.6)
     net-scp (1.0.4)
@@ -283,7 +278,7 @@ DEPENDENCIES
   liquid
   mercury-rails!
   mongoid (~> 3.0.2)
-  mongoid-ancestry!
+  mongoid-ancestry
   mongoid_session_store!
   pry-rails
   pry-remote
