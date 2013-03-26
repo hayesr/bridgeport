@@ -2,7 +2,7 @@
 
 This is a super-simple CMS built on Mercury Editor http://jejacks0n.github.com/mercury/ and MongoDB.
 
-It's still a work in progress.
+It's still a work in progress, but you can see a running example of it here: http://wc.saugususd.org/
 
 
 ##### Why MongoDB?
